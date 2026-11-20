@@ -18,21 +18,25 @@ a{color:#F5F5F5}a:hover{color:#FF2E88}
 .wuha-hero>*{animation:wuhaRise 900ms cubic-bezier(.22,.61,.36,1) both}
 .wuha-hero>*:nth-child(2){animation-delay:120ms}.wuha-hero>*:nth-child(3){animation:wuhaRule 700ms 380ms cubic-bezier(.22,.61,.36,1) both}
 .wuha-hero>*:nth-child(n+4){animation-delay:520ms}
-@media (prefers-reduced-motion: reduce){.wuha-hero>*{animation:none!important}}
+@keyframes wuhaBgIn{from{opacity:0;transform:scale(1.06)}to{opacity:.32;transform:scale(1)}}
+.wuha-bgphoto{animation:wuhaBgIn 2400ms cubic-bezier(.22,.61,.36,1) both}
+@media (prefers-reduced-motion: reduce){.wuha-hero>*,.wuha-bgphoto{animation:none!important}}
 @media (hover:hover){a[style*="background: #FF2E88"]:hover{box-shadow:0 0 0 1px #FF2E88,0 0 26px rgba(255,46,136,.65);transform:translateY(-2px)}a[style*="border: 1px solid"]:hover{border-color:#FF2E88!important;color:#FF2E88!important}}
 a{transition:color .25s ease,border-color .25s ease,box-shadow .4s ease,transform .4s ease}
 </style>
 </helmet>
-<div style="min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: radial-gradient(ellipse 80% 70% at 50% 42%, #161616 0%, #0A0A0A 60%, #060606 100%); font-size: 16px; line-height: 1.6;">
+<div style="position: relative; overflow: hidden; min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-size: 16px; line-height: 1.6;">
+<img src="/_blob/87d984b7eb8c952f8ce7997636c2be55" alt="" aria-hidden="true" class="wuha-bgphoto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; opacity: 0.32; filter: blur(3px) saturate(1.1);">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 55% 60% at 50% 46%, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.25) 100%), linear-gradient(180deg, #0A0A0A 0%, rgba(10,10,10,0) 18%, rgba(10,10,10,0) 75%, #0A0A0A 100%);"></div>
 
-<header style="border-bottom: 1px solid #1E1E1E;">
+<header style="position: relative; border-bottom: 1px solid #1E1E1E;">
   <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;">
     <a href="Main.dc.html" aria-label="WUHA home" style="display: inline-flex; align-items: center; min-height: 44px;"><img src="/_blob/b169541fcce3ae349330dd9fb3a7ff7c" alt="WUHA" style="height: 30px; width: auto; display: block;"></a>
     <a href="Main.dc.html" style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;">← wuha.world</a>
   </div>
 </header>
 
-<main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 24px;">
+<main style="position: relative; flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 24px;">
   <div class="wuha-hero" style="max-width: 640px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
     <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.45em; margin-right: -0.45em; text-transform: uppercase; color: #8A8A8A;">Newsletter · confirmed</span>
     <h1 class="wuha-scan" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(72px, 12vw, 150px); line-height: 0.88; letter-spacing: 0.02em; text-transform: uppercase;">You're in</h1>
@@ -52,7 +56,7 @@ a{transition:color .25s ease,border-color .25s ease,box-shadow .4s ease,transfor
   </div>
 </main>
 
-<footer style="border-top: 1px solid #1E1E1E; color: #8A8A8A; font-size: 13px;">
+<footer style="position: relative; border-top: 1px solid #1E1E1E; color: #8A8A8A; font-size: 13px;">
   <div style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;">
     <span>WUHA · Vienna, Austria</span>
     <span>You can unsubscribe at any time with the link in every email.</span>
