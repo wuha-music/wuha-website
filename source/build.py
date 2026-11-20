@@ -220,6 +220,8 @@ PAGES = [
  # source, out dir, depth, title, description
  ('Main.dc.html', '', 0, 'WUHA · International Synthpop Act from Vienna', 'WUHA is a synthpop band from Vienna, Austria. Music for the late-night drive and the dance floor. Feel the Groove.'),
  ('Press.dc.html', 'press', 1, 'Press kit · WUHA', 'WUHA press kit: bio, photos, logo, covers and facts for press, radio and playlist curators.'),
+ ('Imprint.dc.html', 'imprint', 1, 'Imprint · WUHA', 'Imprint of WUHA, International Synthpop Act from Vienna, Austria.'),
+ ('Privacy.dc.html', 'privacy-policy', 1, 'Privacy policy · WUHA', 'Privacy policy of www.wuha.world: cookies, Google Analytics, Meta and TikTok Pixel, Spotify, newsletter.'),
  ('Confirmed.dc.html', 'confirmed', 1, 'Subscription confirmed · WUHA', 'Thank you for subscribing to the WUHA newsletter.'),
  ('Listen.dc.html', 'listen', 1, 'Listen · WUHA', 'Listen to WUHA on Spotify, Apple Music, YouTube, Amazon Music and SoundCloud.'),
 ]
