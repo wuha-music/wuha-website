@@ -1,5 +1,5 @@
 """Build the static WUHA site from the Design canvas files (.dc.html) into ./site"""
-import os, re, shutil, sys
+import os, re, shutil, sys, json
 from PIL import Image
 
 SRC = os.path.dirname(os.path.abspath(__file__))  # source/
@@ -64,11 +64,11 @@ featured = L('https://open.spotify.com/track/16n7RpZmUyQnW5STC019jN', 'https://o
 for i, l in enumerate(featured):
     l.update(bg='#FF2E88' if i == 0 else 'transparent', fg='#0A0A0A' if i == 0 else '#F5F5F5', border='#FF2E88' if i == 0 else '#8A8A8A')
 songs = [
- dict(cover=COV['nothing'], alt='Nothing Is Forever cover', date='2026-06-04', title='Nothing Is Forever', codes='ISRC QZWFX2661666\nISWC T-985.441.708-6', links=L('https://open.spotify.com/album/6PzTvdEGnA6TUWvCzrE0cA', 'https://on.soundcloud.com/k8gkXMQsF5Ucpz1Hmo', 'https://music.apple.com/at/album/nothing-is-forever-single/6767017107', 'https://youtu.be/6fRO12NRER8', 'https://amazon.de/music/player/albums/B0GZJ75PF7')),
- dict(cover=COV['rainbowClub'], alt='Rainbow Eyes EDM Club Mix cover', date='2025-11-27', title='Rainbow Eyes EDM Club Mix', codes='ISRC QT3FB2543559\nISWC T-335.815.048-4', links=L('https://open.spotify.com/album/5nGvGJoMtn1vQ4MERa67bE', 'https://soundcloud.com/wuha-music/rainbow-eyes-edm-club-mix', 'https://music.apple.com/at/song/rainbow-eyes-edm-club-mix/1845662251', 'https://youtu.be/OG51DSM73gk', 'https://amazon.com/music/player/tracks/B0FVJ1BJKH')),
- dict(cover=COV['rainbow'], alt='Rainbow Eyes cover', date='2025-05-29', title='Rainbow Eyes', codes='ISRC QZNWY2504889\nISWC T-332.322.688-2', links=L('https://open.spotify.com/track/0MfSlR26pT9XLhfOCopd6Q', 'https://soundcloud.com/wuha-music/rainbow-eyes', 'https://music.apple.com/at/song/rainbow-eyes/1813681695', 'https://www.youtube.com/watch?v=x_IUrgaaneo', 'https://amazon.com/music/player/tracks/B0F889RYQD')),
- dict(cover=COV['carolineClub'], alt='Caroline Extended Club Mix cover', date='2025-04-30', title='Caroline Extended Club Mix', codes='ISRC QZMEM2546561\nISWC T-331.410.329-8', links=L('https://open.spotify.com/track/6RmhEHvWrRInEDPOYtmfQX', 'https://soundcloud.com/wuha-music/caroline-feat-mark', 'https://music.apple.com/at/song/caroline-extended-club-mix/1807645791', 'https://www.youtube.com/playlist?list=OLAK5uy_mH9DbpL8zCIJ83hdJ5w_mE5YlQbq0OaG4', 'https://amazon.com/music/player/tracks/B0F49L1S9N')),
- dict(cover=COV['caroline'], alt='Caroline feat. Marc Voc cover', date='2025-02-28', title='Caroline (feat. Marc Voc)', codes='ISRC QZDA72504487\nISWC T-330.792.953-5', links=L('https://open.spotify.com/track/7rPiPqKrZdgBROQXhWjUPz', 'https://on.soundcloud.com/z90jXUje4AUjul09lh', 'https://music.apple.com/at/song/caroline-feat-mark-voc/1793828157', 'https://www.youtube.com/watch?v=S29j0sEb558', 'https://amazon.com/music/player/tracks/B0DVDXZ5S4')),
+ dict(cover=COV['nothing'], alt='Nothing Is Forever cover', date='2026-06-04', href='nothing-is-forever/', title='Nothing Is Forever', codes='ISRC QZWFX2661666\nISWC T-985.441.708-6', links=L('https://open.spotify.com/album/6PzTvdEGnA6TUWvCzrE0cA', 'https://on.soundcloud.com/k8gkXMQsF5Ucpz1Hmo', 'https://music.apple.com/at/album/nothing-is-forever-single/6767017107', 'https://youtu.be/6fRO12NRER8', 'https://amazon.de/music/player/albums/B0GZJ75PF7')),
+ dict(cover=COV['rainbowClub'], alt='Rainbow Eyes EDM Club Mix cover', date='2025-11-27', href='rainbow-eyes-edm-club-mix/', title='Rainbow Eyes EDM Club Mix', codes='ISRC QT3FB2543559\nISWC T-335.815.048-4', links=L('https://open.spotify.com/album/5nGvGJoMtn1vQ4MERa67bE', 'https://soundcloud.com/wuha-music/rainbow-eyes-edm-club-mix', 'https://music.apple.com/at/song/rainbow-eyes-edm-club-mix/1845662251', 'https://youtu.be/OG51DSM73gk', 'https://amazon.com/music/player/tracks/B0FVJ1BJKH')),
+ dict(cover=COV['rainbow'], alt='Rainbow Eyes cover', date='2025-05-29', href='rainbow-eyes/', title='Rainbow Eyes', codes='ISRC QZNWY2504889\nISWC T-332.322.688-2', links=L('https://open.spotify.com/track/0MfSlR26pT9XLhfOCopd6Q', 'https://soundcloud.com/wuha-music/rainbow-eyes', 'https://music.apple.com/at/song/rainbow-eyes/1813681695', 'https://www.youtube.com/watch?v=x_IUrgaaneo', 'https://amazon.com/music/player/tracks/B0F889RYQD')),
+ dict(cover=COV['carolineClub'], alt='Caroline Extended Club Mix cover', date='2025-04-30', href='caroline-extended-club-mix/', title='Caroline Extended Club Mix', codes='ISRC QZMEM2546561\nISWC T-331.410.329-8', links=L('https://open.spotify.com/track/6RmhEHvWrRInEDPOYtmfQX', 'https://soundcloud.com/wuha-music/caroline-feat-mark', 'https://music.apple.com/at/song/caroline-extended-club-mix/1807645791', 'https://www.youtube.com/playlist?list=OLAK5uy_mH9DbpL8zCIJ83hdJ5w_mE5YlQbq0OaG4', 'https://amazon.com/music/player/tracks/B0F49L1S9N')),
+ dict(cover=COV['caroline'], alt='Caroline feat. Marc Voc cover', date='2025-02-28', href='caroline/', title='Caroline (feat. Marc Voc)', codes='ISRC QZDA72504487\nISWC T-330.792.953-5', links=L('https://open.spotify.com/track/7rPiPqKrZdgBROQXhWjUPz', 'https://on.soundcloud.com/z90jXUje4AUjul09lh', 'https://music.apple.com/at/song/caroline-feat-mark-voc/1793828157', 'https://www.youtube.com/watch?v=S29j0sEb558', 'https://amazon.com/music/player/tracks/B0DVDXZ5S4')),
 ]
 videos = [
  dict(kind='Music video', title='Caroline (feat. Marc Voc)', url='https://www.youtube.com/watch?v=S29j0sEb558', cover=COV['caroline']),
@@ -104,7 +104,7 @@ def find_block(s, tag, start):
             depth -= 1; i = n_close + len(tag) + 3
             if depth == 0: return o, oe, n_close, i
 
-TOGGLE = {'sent', 'playerOn', 'playerOff'}
+TOGGLE = {'sent', 'playerOn', 'playerOff', 'menuOpen'}
 
 def render(s, ctx):
     out, i = [], 0
@@ -139,7 +139,7 @@ FONTS = '''@font-face{font-family:Anton;src:url(DEPTHassets/fonts/anton-latin-40
 @font-face{font-family:Inter;src:url(DEPTHassets/fonts/inter-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:Inter;src:url(DEPTHassets/fonts/inter-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 @font-face{font-family:Inter;src:url(DEPTHassets/fonts/inter-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
-html,body{margin:0;background:#0A0A0A;overflow-x:clip}*{box-sizing:border-box}img{max-width:100%}
+html,body{margin:0;background:#0A0A0A;overflow-x:clip}*{box-sizing:border-box}[data-if][hidden]{display:none!important}img{max-width:100%}
 '''
 
 REVEAL_JS = '''(function(){
@@ -160,6 +160,10 @@ var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce
 var sec=document.getElementById('numbers'),nums=[].slice.call(document.querySelectorAll('[data-count]'));
 function show(p){nums.forEach(function(n){n.textContent=Math.round(+n.dataset.count*p).toLocaleString('en-US');});}
 if(sec&&!reduce&&'IntersectionObserver' in window){var r=sec.getBoundingClientRect();if(!(r.top<window.innerHeight&&r.bottom>0)){show(0);var io=new IntersectionObserver(function(es){if(!es.some(function(e){return e.isIntersecting;}))return;io.disconnect();var t0=performance.now();function st(t){var p=Math.min(1,(t-t0)/1800);show(1-Math.pow(1-p,3));if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);},{threshold:0.35});io.observe(sec);}}
+var menu=document.querySelector('[data-if="menuOpen"]'),burgers=[].slice.call(document.querySelectorAll('.wuha-burger'));
+function setMenu(o){if(!menu)return;menu.hidden=!o;document.documentElement.style.overflow=o?'hidden':'';burgers.forEach(function(b){b.setAttribute('aria-expanded',o?'true':'false');});if(o){var c=menu.querySelector('button');if(c)c.focus();}}
+burgers.forEach(function(b){b.addEventListener('click',function(){setMenu(true);});});
+if(menu){menu.querySelector('button').addEventListener('click',function(){setMenu(false);});[].forEach.call(menu.querySelectorAll('a'),function(a){a.addEventListener('click',function(){setMenu(false);});});document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});}
 var f=document.querySelector('#newsletter form');
 if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=f.querySelector('[data-if="sent"]');if(ok)ok.hidden=false;});
 })();'''
@@ -169,37 +173,46 @@ var h=document.getElementById('wuha-hdr'),inner=h.firstElementChild,logo=h.query
 function onScroll(){var s=(window.scrollY||0)>60;h.style.background=s?'rgba(10,10,10,0.72)':'rgba(10,10,10,1)';inner.style.padding=(s?'4px':'22px')+' 32px';logo.style.height=s?'20px':'34px';}
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 var b=document.querySelector('[data-if="playerOff"] button');
-if(b)b.addEventListener('click',function(){var on=document.querySelector('[data-if="playerOn"]');on.innerHTML='<iframe title="Losing My Shape on Spotify" src="https://open.spotify.com/embed/track/16n7RpZmUyQnW5STC019jN?theme=0" width="100%" height="152" style="border:0;border-radius:12px;flex:1 1 100%" allow="encrypted-media" loading="lazy"></iframe>';on.hidden=false;document.querySelector('[data-if="playerOff"]').hidden=true;});
+if(b)b.addEventListener('click',function(){var on=document.querySelector('[data-if="playerOn"]');on.innerHTML='<iframe title="Spotify player" src="https://open.spotify.com/embed/'+document.body.dataset.embed+'?theme=0" width="100%" height="152" style="border:0;border-radius:12px;flex:1 1 100%" allow="encrypted-media" loading="lazy"></iframe>';on.hidden=false;document.querySelector('[data-if="playerOff"]').hidden=true;});
 })();'''
 
+SONGS = json.load(open(os.path.join(SRC, 'songs.json'), encoding='utf8'))
 PAGES = [
  # source, out dir, depth, title, description
  ('Main.dc.html', '', 0, 'WUHA · International Synthpop Act from Vienna', 'WUHA is a synthpop band from Vienna, Austria. Music for the late-night drive and the dance floor. Feel the Groove.'),
- ('Song-LosingMyShape.dc.html', 'losing-my-shape', 1, 'Losing My Shape · WUHA', 'Losing My Shape, the new single by WUHA from Vienna. Listen on Spotify, Apple Music and YouTube.'),
  ('Press.dc.html', 'press', 1, 'Press kit · WUHA', 'WUHA press kit: bio, photos, logo, covers and facts for press, radio and playlist curators.'),
  ('Listen.dc.html', 'listen', 1, 'Listen · WUHA', 'Listen to WUHA on Spotify, Apple Music, YouTube, Amazon Music and SoundCloud.'),
 ]
+for x in SONGS:
+    PAGES.append(('Song.dc.html', x['slug'], 1, x['title'] + ' · WUHA', x['title'] + ' by WUHA, synthpop from Vienna. ' + x['tagline'] + ' Listen on Spotify, Apple Music and YouTube.', x))
 
 def links(s, depth):
     up = '../' * depth
     s = s.replace('href="Main.dc.html#', f'href="{up or "./"}#').replace('href="Main.dc.html"', f'href="{up or "./"}"')
-    for src, dst in [('Song-LosingMyShape.dc.html', 'losing-my-shape/'), ('Press.dc.html', 'press/'), ('Listen.dc.html', 'listen/')]:
+    for src, dst in [('Song.dc.html', 'losing-my-shape/'), ('Press.dc.html', 'press/'), ('Listen.dc.html', 'listen/')]:
         s = s.replace(f'href="{src}"', f'href="{up}{dst}"')
     s = re.sub(r'href="(https?://[^"]+)"', r'href="\1" target="_blank" rel="noopener"', s)
     return s
 
 BUILD = os.environ.get('GITHUB_SHA', 'local')[:7]
-for src, odir, depth, title, desc in PAGES:
+for page in PAGES:
+    src, odir, depth, title, desc = page[:5]
+    song = page[5] if len(page) > 5 else None
     raw = open(os.path.join(P, src), encoding='utf8').read()
     helmet = re.search(r'<helmet>(.*?)</helmet>', raw, re.S).group(1)
     css = '\n'.join(re.findall(r'<style>(.*?)</style>', helmet, re.S))
     body = re.search(r'<x-dc>(.*?)</x-dc>', raw, re.S).group(1)
     body = re.sub(r'<helmet>.*?</helmet>', '', body, flags=re.S)
-    ctx = dict(false=False, true=True, sent=False, playerOn=False, playerOff=True,
+    ctx = dict(false=False, true=True, sent=False, menuOpen=False, menuExpanded='false', playerOn=False, playerOff=True,
                navHidden='true', navTransform='translateY(-100%)', navOpacity='0', navVisibility='hidden', navDelay='450ms', navTab='-1',
                navBg='rgba(10,10,10,1)', navPad='22px', logoH='34px',
                featured=dict(links=featured), songs=songs, videos=videos, airplays=airplays, channels=channels,
                num=dict(fans='1,961', playlists='70', followers='43,663', placements='85'))
+    if song:
+        ctx['song'] = dict(song, coverSrc='/_blob/' + song['cover'], hasIswc=bool(song['iswc']),
+                           creditRows=[dict(k=k, v=v) for k, v in song['credits']],
+                           blocks=[dict(t=x['t'], isHead=x['h'], isText=not x['h']) for x in song['story']])
+        ctx['others'] = [dict(title=o['title'], short=o['short'], coverSrc='/_blob/' + o['cover'], href='../' + o['slug'] + '/') for o in SONGS if o['slug'] != song['slug']]
     for k, n in [('fans', 1961), ('playlists', 70), ('followers', 43663), ('placements', 85)]:
         body = body.replace('">{{num.%s}}</strong>' % k, '" data-count="%d">{{num.%s}}</strong>' % (n, k))
     html = render(body, ctx)
@@ -212,7 +225,7 @@ for src, odir, depth, title, desc in PAGES:
     if src == 'Main.dc.html':
         html = html.replace('<div aria-hidden="true" style="position: fixed; top: 0;', '<div id="wuha-nav2" aria-hidden="true" style="position: fixed; top: 0;', 1)
         js += MAIN_JS
-    elif src in ('Song-LosingMyShape.dc.html', 'Press.dc.html'):
+    elif src in ('Song.dc.html', 'Press.dc.html'):
         html = html.replace('<header style="position: sticky;', '<header id="wuha-hdr" style="position: sticky;', 1)
         js += SUB_JS
     if src == 'Listen.dc.html':
@@ -237,7 +250,7 @@ for src, odir, depth, title, desc in PAGES:
 {FONTS.replace('DEPTH', up)}{css}
 </style>
 </head>
-<body>
+<body{(' data-embed="' + song['embed'] + '"') if song else ''}>
 {html.strip()}
 <script>
 {js}

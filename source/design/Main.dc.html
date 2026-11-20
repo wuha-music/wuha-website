@@ -45,6 +45,8 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
 .wuha-hero>*:nth-child(2){animation-delay:120ms}.wuha-hero>*:nth-child(3){animation:wuhaRule 700ms 380ms cubic-bezier(.22,.61,.36,1) both}
 .wuha-hero>*:nth-child(4){animation-delay:420ms}.wuha-hero>*:nth-child(5){animation-delay:500ms}.wuha-hero>*:nth-child(6){animation-delay:580ms}.wuha-hero>*:nth-child(n+7){animation-delay:680ms}
 @media (prefers-reduced-motion: reduce){.wuha-pre{opacity:1;transform:none}.wuha-hero>*{animation:none!important}}
+.wuha-burger{display:none}
+@media (max-width:700px){nav[aria-label="Main navigation"],nav[aria-label="Compact navigation"]{display:none!important}.wuha-burger{display:inline-flex!important}}
 </style>
 </helmet>
 <div style="font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-size: 16px; line-height: 1.6;">
@@ -60,6 +62,7 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
       <a href="Press.dc.html" style="color: #F5F5F5; text-decoration: none;">Press</a>
       <a href="#newsletter" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600;">Don't miss a beat</a>
     </nav>
+    <button type="button" class="wuha-burger" onClick="{{openMenu}}" aria-label="Open menu" aria-expanded="{{menuExpanded}}" style="align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; background: transparent; border: 1px solid rgba(245,245,245,0.25); border-radius: 2px; cursor: pointer;"><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h14" stroke="#F5F5F5" stroke-width="2"></path></svg></button>
   </div>
 </header>
 
@@ -74,8 +77,28 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
       <a href="Press.dc.html" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">Press</a>
       <a href="#newsletter" tabindex="{{navTab}}" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600;">Don't miss a beat</a>
     </nav>
+    <button type="button" class="wuha-burger" onClick="{{openMenu}}" aria-label="Open menu" aria-expanded="{{menuExpanded}}" tabindex="{{navTab}}" style="align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; background: transparent; border: 1px solid rgba(245,245,245,0.25); border-radius: 2px; cursor: pointer;"><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h14" stroke="#F5F5F5" stroke-width="2"></path></svg></button>
   </div>
 </div>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<div role="dialog" aria-modal="true" aria-label="Menu" class="wuha-menu" style="position: fixed; inset: 0; z-index: 100; background: rgba(10,10,10,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 16px 16px calc(32px + env(safe-area-inset-bottom, 0px));">
+  <div style="display: flex; align-items: center; justify-content: space-between; min-height: 56px;">
+    <img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA" style="height: 26px; width: auto; display: block;">
+    <button type="button" onClick="{{closeMenu}}" aria-label="Close menu" style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; background: transparent; border: 1px solid rgba(245,245,245,0.25); border-radius: 2px; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" stroke="#F5F5F5" stroke-width="2"></path></svg></button>
+  </div>
+  <nav aria-label="Mobile menu" style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+    <a href="#oursongs" onClick="{{closeMenu}}" style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #F5F5F5;">Music</a>
+    <a href="#watch" onClick="{{closeMenu}}" style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #F5F5F5;">Watch</a>
+    <a href="#about" onClick="{{closeMenu}}" style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #F5F5F5;">About</a>
+    <a href="#airplays" onClick="{{closeMenu}}" style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #F5F5F5;">On air</a>
+    <a href="Press.dc.html" style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #F5F5F5;">Press</a>
+    <span aria-hidden="true" style="width: 80px; height: 2px; margin: 18px 0; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+    <a href="#newsletter" onClick="{{closeMenu}}" style="font-family: Anton, Impact, sans-serif; font-size: 32px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; color: #FF2E88; text-shadow: 0 0 14px rgba(255,46,136,0.6);">Don't miss a beat</a>
+  </nav>
+  <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase; color: #8A8A8A;">Feel the Groove · Vienna</span>
+</div>
+</sc-if>
 
 <section id="top" style="position: relative; background: #0A0A0A; overflow: hidden; border-bottom: 1px solid #1E1E1E;">
   <img src="/_blob/d348640da877f8e61d26a21b2298d9b1" alt="The two WUHA members in black and white with pink sunglasses and a pink neon glow, facing each other from the left and right edge" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;">
@@ -126,7 +149,7 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
           <a href="{{l.url}}" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; border: 1px solid {{l.border}}; background: {{l.bg}}; color: {{l.fg}}; text-decoration: none; border-radius: 2px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">{{l.label}}</a>
         </sc-for>
       </div>
-      <a href="Song-LosingMyShape.dc.html" style="align-self: flex-start; font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; padding-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">Story, lyrics &amp; video <span aria-hidden="true">→</span></a>
+      <a href="Song.dc.html" style="align-self: flex-start; font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; padding-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">Story, lyrics &amp; video <span aria-hidden="true">→</span></a>
       <span style="font-size: 13px; color: #8A8A8A; line-height: 1.5;">Songs written by Andreas Wukics-Hagen, Wolfgang Laab, Karen Fellinger</span>
       <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A8A8A;">ISRC QT6HM2642100</span>
     </div>
@@ -140,7 +163,7 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 36px 28px;">
       <sc-for list="{{songs}}" as="s" hint-placeholder-count="5">
         <article style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
-          <a href="Song-LosingMyShape.dc.html" aria-label="{{s.title}}: song page" style="display: block;"><img src="{{s.cover}}" alt="{{s.alt}}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #1E1E1E;"></a>
+          <a href="{{s.href}}" aria-label="{{s.title}}: song page" style="display: block;"><img src="{{s.cover}}" alt="{{s.alt}}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #1E1E1E;"></a>
           <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; color: #FF2E88;">{{s.date}}</span>
           <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">{{s.title}}</h3>
           <div style="display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; font-weight: 500;">
@@ -372,7 +395,7 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { sent: false, compact: false, story: 'losing', countP: 1 };
+    this.state = { sent: false, compact: false, story: 'losing', countP: 1, menu: false };
     this.lastY = 0;
     this.onScroll = () => {
       const y = window.scrollY || document.documentElement.scrollTop || 0;
@@ -439,15 +462,15 @@ class Component extends DCLogic {
       'https://amazon.de/music/player/albums/B0HFLL9X8Q'
     ).map((l, i) => ({ ...l, bg: i === 0 ? '#FF2E88' : 'transparent', fg: i === 0 ? '#0A0A0A' : '#F5F5F5', border: i === 0 ? '#FF2E88' : '#8A8A8A' }));
     const songs = [
-      { cover: cover.nothing, alt: 'Nothing Is Forever cover', date: '2026-06-04', title: 'Nothing Is Forever', codes: 'ISRC QZWFX2661666\nISWC T-985.441.708-6',
+      { cover: cover.nothing, href: 'Song.dc.html', alt: 'Nothing Is Forever cover', date: '2026-06-04', title: 'Nothing Is Forever', codes: 'ISRC QZWFX2661666\nISWC T-985.441.708-6',
         links: L('https://open.spotify.com/album/6PzTvdEGnA6TUWvCzrE0cA', 'https://on.soundcloud.com/k8gkXMQsF5Ucpz1Hmo', 'https://music.apple.com/at/album/nothing-is-forever-single/6767017107', 'https://youtu.be/6fRO12NRER8', 'https://amazon.de/music/player/albums/B0GZJ75PF7') },
-      { cover: cover.rainbowClub, alt: 'Rainbow Eyes EDM Club Mix cover', date: '2025-11-27', title: 'Rainbow Eyes EDM Club Mix', codes: 'ISRC QT3FB2543559\nISWC T-335.815.048-4',
+      { cover: cover.rainbowClub, href: 'Song.dc.html', alt: 'Rainbow Eyes EDM Club Mix cover', date: '2025-11-27', title: 'Rainbow Eyes EDM Club Mix', codes: 'ISRC QT3FB2543559\nISWC T-335.815.048-4',
         links: L('https://open.spotify.com/album/5nGvGJoMtn1vQ4MERa67bE', 'https://soundcloud.com/wuha-music/rainbow-eyes-edm-club-mix', 'https://music.apple.com/at/song/rainbow-eyes-edm-club-mix/1845662251', 'https://youtu.be/OG51DSM73gk', 'https://amazon.com/music/player/tracks/B0FVJ1BJKH') },
-      { cover: cover.rainbow, alt: 'Rainbow Eyes cover', date: '2025-05-29', title: 'Rainbow Eyes', codes: 'ISRC QZNWY2504889\nISWC T-332.322.688-2',
+      { cover: cover.rainbow, href: 'Song.dc.html', alt: 'Rainbow Eyes cover', date: '2025-05-29', title: 'Rainbow Eyes', codes: 'ISRC QZNWY2504889\nISWC T-332.322.688-2',
         links: L('https://open.spotify.com/track/0MfSlR26pT9XLhfOCopd6Q', 'https://soundcloud.com/wuha-music/rainbow-eyes', 'https://music.apple.com/at/song/rainbow-eyes/1813681695', 'https://www.youtube.com/watch?v=x_IUrgaaneo', 'https://amazon.com/music/player/tracks/B0F889RYQD') },
-      { cover: cover.carolineClub, alt: 'Caroline Extended Club Mix cover', date: '2025-04-30', title: 'Caroline Extended Club Mix', codes: 'ISRC QZMEM2546561\nISWC T-331.410.329-8',
+      { cover: cover.carolineClub, href: 'Song.dc.html', alt: 'Caroline Extended Club Mix cover', date: '2025-04-30', title: 'Caroline Extended Club Mix', codes: 'ISRC QZMEM2546561\nISWC T-331.410.329-8',
         links: L('https://open.spotify.com/track/6RmhEHvWrRInEDPOYtmfQX', 'https://soundcloud.com/wuha-music/caroline-feat-mark', 'https://music.apple.com/at/song/caroline-extended-club-mix/1807645791', 'https://www.youtube.com/playlist?list=OLAK5uy_mH9DbpL8zCIJ83hdJ5w_mE5YlQbq0OaG4', 'https://amazon.com/music/player/tracks/B0F49L1S9N') },
-      { cover: cover.caroline, alt: 'Caroline feat. Marc Voc cover', date: '2025-02-28', title: 'Caroline (feat. Marc Voc)', codes: 'ISRC QZDA72504487\nISWC T-330.792.953-5',
+      { cover: cover.caroline, href: 'Song.dc.html', alt: 'Caroline feat. Marc Voc cover', date: '2025-02-28', title: 'Caroline (feat. Marc Voc)', codes: 'ISRC QZDA72504487\nISWC T-330.792.953-5',
         links: L('https://open.spotify.com/track/7rPiPqKrZdgBROQXhWjUPz', 'https://on.soundcloud.com/z90jXUje4AUjul09lh', 'https://music.apple.com/at/song/caroline-feat-mark-voc/1793828157', 'https://www.youtube.com/watch?v=S29j0sEb558', 'https://amazon.com/music/player/tracks/B0DVDXZ5S4') }
     ];
     const P = (t) => ({ isText: true, isHead: false, text: t });
@@ -508,6 +531,10 @@ class Component extends DCLogic {
       navHidden: c ? 'false' : 'true',
       navTab: c ? '0' : '-1',
       sent: this.state.sent,
+      menuOpen: this.state.menu,
+      menuExpanded: this.state.menu ? 'true' : 'false',
+      openMenu: () => this.setState({ menu: true }),
+      closeMenu: () => this.setState({ menu: false }),
       submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
       videos: [
         { kind: 'Music video', title: 'Caroline (feat. Marc Voc)', url: 'https://www.youtube.com/watch?v=S29j0sEb558', cover: cover.caroline },
