@@ -188,6 +188,7 @@ def links(s, depth):
     s = re.sub(r'href="(https?://[^"]+)"', r'href="\1" target="_blank" rel="noopener"', s)
     return s
 
+BUILD = os.environ.get('GITHUB_SHA', 'local')[:7]
 for src, odir, depth, title, desc in PAGES:
     raw = open(os.path.join(P, src), encoding='utf8').read()
     helmet = re.search(r'<helmet>(.*?)</helmet>', raw, re.S).group(1)
@@ -226,6 +227,7 @@ for src, odir, depth, title, desc in PAGES:
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0A0A0A">
+<meta name="build" content="{BUILD}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:image" content="{up}assets/img/wuha-hero.webp">

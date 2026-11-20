@@ -36,8 +36,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.world4you.com
-          username: ftp2463261_5771
+          username: ftp2463261
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./site/
-          server-dir: ./
+          server-dir: ./2027/
