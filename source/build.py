@@ -144,6 +144,7 @@ html,body{margin:0;background:#0A0A0A;overflow-x:clip}*{box-sizing:border-box}[d
 
 REVEAL_JS = r'''window.dataLayer=window.dataLayer||[];
 function wuhaTrack(ev,p){var o={event:ev};for(var k in p)o[k]=p[k];window.dataLayer.push(o);}
+document.addEventListener('play',function(e){if(e.target.tagName==='AUDIO')wuhaTrack('interview_play',{page:location.pathname});},true);
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'',t=(a.textContent||'').trim();
  if(/open\.spotify\.com/.test(h))wuhaTrack('spotify_click',{link_text:t,page:location.pathname});
  if(/#newsletter$/.test(h))wuhaTrack('newsletter_button',{link_text:t,page:location.pathname});
@@ -215,7 +216,7 @@ for page in PAGES:
     css = '\n'.join(re.findall(r'<style>(.*?)</style>', helmet, re.S))
     body = re.search(r'<x-dc>(.*?)</x-dc>', raw, re.S).group(1)
     body = re.sub(r'<helmet>.*?</helmet>', '', body, flags=re.S)
-    ctx = dict(false=False, true=True, sent=False, nlError=False, menuOpen=False, menuExpanded='false', playerOn=False, playerOff=True,
+    ctx = dict(interviewAudio=('../' * depth) + 'assets/audio/breaking-sound-radio-interview.mp3', false=False, true=True, sent=False, nlError=False, menuOpen=False, menuExpanded='false', playerOn=False, playerOff=True,
                navHidden='true', navTransform='translateY(-100%)', navOpacity='0', navVisibility='hidden', navDelay='450ms', navTab='-1',
                navBg='rgba(10,10,10,1)', navPad='22px', logoH='34px',
                featured=dict(links=featured), songs=songs, videos=videos, airplays=airplays, channels=channels,
@@ -275,5 +276,7 @@ for page in PAGES:
     left = re.findall(r'\{\{[^}]*\}\}|<sc-|/_blob/', page)
     print(src, '->', os.path.join(odir, 'index.html'), 'leftovers:', left[:5])
 
+os.makedirs(os.path.join(OUT, 'assets', 'audio'), exist_ok=True)
+shutil.copy(os.path.join(SRC, 'breaking-sound-radio-interview.mp3'), os.path.join(OUT, 'assets', 'audio'))
 open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /\n')
 print('done')
