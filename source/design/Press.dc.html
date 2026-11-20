@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WUHA Press Kit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+a{color:#F5F5F5}a:hover{color:#FF2E88}
+.wuha-scan{color:transparent;background:repeating-linear-gradient(180deg,#F5F5F5 0 2px,#D9D9D9 2px 4px);-webkit-background-clip:text;background-clip:text}
+
+.wuha-pre{opacity:0;transform:translateY(28px)}
+.wuha-in{opacity:1;transform:none;transition:opacity 900ms ease,transform 900ms cubic-bezier(.22,.61,.36,1)}
+@keyframes wuhaRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes wuhaRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.wuha-hero>*{animation:wuhaRise 900ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(2){animation-delay:120ms}.wuha-hero>*:nth-child(3){animation:wuhaRule 700ms 380ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(4){animation-delay:420ms}.wuha-hero>*:nth-child(5){animation-delay:500ms}.wuha-hero>*:nth-child(6){animation-delay:580ms}.wuha-hero>*:nth-child(n+7){animation-delay:680ms}
+@media (prefers-reduced-motion: reduce){.wuha-pre{opacity:1;transform:none}.wuha-hero>*{animation:none!important}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-size: 16px; line-height: 1.6;">
+
+<header style="position: sticky; top: 0; z-index: 50; background: {{navBg}}; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(245,245,245,0.08); transition: background 400ms ease;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: {{navPad}} 32px; transition: padding 400ms cubic-bezier(.22,.61,.36,1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;">
+    <a href="Main.dc.html" aria-label="WUHA home" style="display: inline-flex; align-items: center; min-height: 44px;"><img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA" style="height: {{logoH}}; width: auto; display: block; transition: height 400ms cubic-bezier(.22,.61,.36,1);"></a>
+    <a href="Main.dc.html" style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;">← Back to wuha.world</a>
+  </div>
+</header>
+
+<section class="wuha-hero" style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 40px; display: flex; flex-direction: column; gap: 18px;">
+  <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.45em; text-transform: uppercase; color: #FF2E88;">Press · Radio · Playlist curators</span>
+  <h1 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 7vw, 104px); line-height: 0.9; letter-spacing: 0.02em; text-transform: uppercase;"><span class="wuha-scan">Press</span> kit</h1>
+  <span aria-hidden="true" style="width: 80px; height: 2px; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+  <p style="margin: 0; max-width: 640px; color: #D0D0D0; font-size: 18px;">Everything you need to write about WUHA or play our music: bio, photos, logo, covers and facts. Free to use with the credit "WUHA".</p>
+  <a href="#downloads" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 700; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;">Download full kit (.zip)</a>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 40px 32px; display: flex; flex-wrap: wrap; gap: 40px 64px;">
+  <div style="flex: 1.4 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Short bio · 50 words</span>
+    <p style="margin: 0; font-size: 18px;">WUHA is a synthpop duo from Vienna, Austria. Andreas and Wolfgang make music for the late-night drive and the dance floor: glowing synths, 80s nostalgia and roots in funk, soul and rock. Their singles have been added to 70 Spotify playlists and played on radio from Mexico to Los Angeles.</p>
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A; margin-top: 16px;">Long bio</span>
+    <p style="margin: 0; color: #D0D0D0;">The Viennese production team WUHA unites a love for music with a shared history that began on stage. As teenagers, Andreas and Wolfgang met in a music store and founded their first band, Cinderella. Later, with their Top-40 band Broadway, they toured Germany, Austria, Italy and Switzerland.</p>
+    <p style="margin: 0; color: #D0D0D0;">Their paths went different ways: Wolfgang moved to the U.S. and worked in studios alongside producers like Peter Wolf, while Andreas became a sound engineer for Austrian television and cinema. In 2025 they reunited as WUHA. The analog soul of their roots meets modern production. Feel the Groove.</p>
+  </div>
+  <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Fact sheet</span>
+    <dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-size: 15px; border-top: 1px solid #1E1E1E; padding-top: 14px;">
+      <dt style="color: #8A8A8A;">Genre</dt><dd style="margin: 0;">Synthpop, pop, dance</dd>
+      <dt style="color: #8A8A8A;">From</dt><dd style="margin: 0;">Vienna, Austria</dd>
+      <dt style="color: #8A8A8A;">Members</dt><dd style="margin: 0;">Andreas, Wolfgang</dd>
+      <dt style="color: #8A8A8A;">Since</dt><dd style="margin: 0;">2025</dd>
+      <dt style="color: #8A8A8A;">Latest single</dt><dd style="margin: 0;">Losing My Shape (28.08.2026)</dd>
+      <dt style="color: #8A8A8A;">Releases</dt><dd style="margin: 0;">6 singles and club mixes</dd>
+      <dt style="color: #8A8A8A;">Playlists</dt><dd style="margin: 0;">70 on Spotify</dd>
+      <dt style="color: #8A8A8A;">Radio</dt><dd style="margin: 0;">Breaking Sound Radio (Los Angeles), stations in Mexico, Venezuela and Uganda</dd>
+      <dt style="color: #8A8A8A;">Contact</dt><dd style="margin: 0;">contact@wuha.world</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="downloads" style="max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: flex; flex-direction: column; gap: 24px;">
+  <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 44px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Photos &amp; logo</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;"><img src="/_blob/d348640da877f8e61d26a21b2298d9b1" alt="WUHA press photo with pink sunglasses" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block;"><figcaption style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px;"><span style="color: #BDBDBD;">Key visual · neon</span><a href="#downloads" style="font-weight: 600;">Download</a></figcaption></figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;"><img src="/_blob/79725613c1c4b3c60368a767808dae1d" alt="WUHA press photo, Andreas and Wolfgang" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; filter: grayscale(1) contrast(1.2);"><figcaption style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px;"><span style="color: #BDBDBD;">Band photo · B/W</span><a href="#downloads" style="font-weight: 600;">Download</a></figcaption></figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;"><div style="aspect-ratio: 3 / 2; max-width: 100%; background: #141414; border: 1px solid #1E1E1E; display: flex; align-items: center; justify-content: center;"><img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA logo" style="width: 60%; height: auto; display: block;"></div><figcaption style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px;"><span style="color: #BDBDBD;">Logo · PNG and SVG</span><a href="#downloads" style="font-weight: 600;">Download</a></figcaption></figure>
+  </div>
+  <h3 style="margin: 24px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 28px; letter-spacing: 0.03em; text-transform: uppercase;">Covers</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px;">
+    <a href="#downloads" style="display: block;"><img src="/_blob/3bbda600832c743d6db2d0f28cbc2bb1" alt="Losing My Shape cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+    <a href="#downloads" style="display: block;"><img src="/_blob/e0081c817ef9819429a465602300dbb7" alt="Nothing Is Forever cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+    <a href="#downloads" style="display: block;"><img src="/_blob/5aef3926b9204320f9ad44580d176857" alt="Rainbow Eyes EDM Club Mix cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+    <a href="#downloads" style="display: block;"><img src="/_blob/b19370bc642c32855243f364747955b1" alt="Rainbow Eyes cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+    <a href="#downloads" style="display: block;"><img src="/_blob/3908e2f16c12f510fa6c7bb08b6b5da0" alt="Caroline Extended Club Mix cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+    <a href="#downloads" style="display: block;"><img src="/_blob/5767883bccdb2a18fa12e16ad23938c1" alt="Caroline feat. Marc Voc cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"></a>
+  </div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 40px 32px 104px; display: flex; flex-wrap: wrap; gap: 32px 64px; border-top: 1px solid #1E1E1E;">
+  <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Radio &amp; playlists</span>
+    <p style="margin: 0; color: #D0D0D0;">Radio-ready files (WAV, MP3 320) and clean edits on request. Playlist curators: all songs are on Spotify, Apple Music, Amazon Music, YouTube Music, Deezer and TIDAL.</p>
+  </div>
+  <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Press contact</span>
+    <p style="margin: 0; font-family: Anton, Impact, sans-serif; font-size: 30px; letter-spacing: 0.03em;">contact@wuha.world</p>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = Object.assign({ navHide: false }, this.state || {}, {});
+    this.lastY = 0;
+    this.onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const navHide = y > 60;
+      if (navHide !== this.state.navHide) this.setState({ navHide });
+    };
+  }
+  componentDidMount() { window.addEventListener('scroll', this.onScroll, { passive: true }); this.revealSections(); }
+  revealSections() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const els = Array.from(document.querySelectorAll('section > div, section > h2, section > article, footer > div')).filter((el) => !el.closest('.wuha-hero') && el.getBoundingClientRect().top > window.innerHeight);
+    els.forEach((el) => el.classList.add('wuha-pre'));
+    this.rio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('wuha-in'); e.target.classList.remove('wuha-pre'); this.rio.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => this.rio.observe(el));
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); if (this.rio) this.rio.disconnect(); }
+  renderVals() {
+    return {
+      navBg: this.state.navHide ? 'rgba(10,10,10,0.72)' : 'rgba(10,10,10,1)',
+      navPad: this.state.navHide ? '4px' : '22px',
+      logoH: this.state.navHide ? '20px' : '34px',
+    };
+  }
+}
+</script>
+</body>
+</html>

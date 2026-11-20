@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WUHA Homepage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A;overflow-x:clip}
+html{scroll-behavior:smooth}
+a{color:#F5F5F5}a:hover{color:#FF2E88}
+@keyframes wuhaGlow{0%,100%{opacity:.55}48%{opacity:.75}50%{opacity:.5}52%{opacity:.78}}
+.wuha-glow{animation:wuhaGlow 7s ease-in-out infinite}
+.wuha-mbar{display:none}
+@media (max-width:700px){.wuha-mbar{display:flex}footer{padding-bottom:72px}}
+.wuha-scan{color:transparent;background:repeating-linear-gradient(180deg,#F5F5F5 0 2px,#D9D9D9 2px 4px);-webkit-background-clip:text;background-clip:text}
+.wuha-neon{color:#FF2E88;text-shadow:0 0 14px rgba(255,46,136,0.7)}
+@keyframes neonOn{0%{opacity:1}12%{opacity:.45}22%{opacity:1}34%{opacity:.65}44%,100%{opacity:1}}
+a,button,article img,figure img,section[aria-label="2025 story"] img,header img{transition:color .25s ease,background-color .25s ease,border-color .25s ease,box-shadow .45s ease,transform .45s cubic-bezier(.22,.61,.36,1),text-shadow .35s ease,filter .45s ease}
+@media (hover:hover){
+nav a:not([style*="#FF2E88"]):hover,section[aria-label="Listen on"] a:hover{color:#FF2E88!important;text-shadow:0 0 12px rgba(255,46,136,.65);animation:neonOn .5s linear 1}
+a[style*="background: #FF2E88"]:hover,button[style*="background: #FF2E88"]:hover{box-shadow:0 0 0 1px #FF2E88,0 0 26px rgba(255,46,136,.65);transform:translateY(-2px);animation:neonOn .5s linear 1}
+a[style*="border: 1px solid"]:not([style*="background: #FF2E88"]):hover{border-color:#FF2E88!important;color:#FF2E88!important;box-shadow:0 0 18px rgba(255,46,136,.35),inset 0 0 12px rgba(255,46,136,.15)}
+a[style*="border-bottom: 2px solid #FF2E88"]:hover,a[style*="border-bottom: 1px solid"]:hover{color:#FF2E88!important;text-shadow:0 0 12px rgba(255,46,136,.6)}
+button[aria-pressed="false"]:hover{border-color:#FF2E88!important;color:#FF2E88!important;box-shadow:0 0 14px rgba(255,46,136,.35)}
+article:hover img,figure:hover img{transform:scale(1.03);box-shadow:0 0 0 1px #FF2E88,0 0 34px rgba(255,46,136,.45)}
+article:hover h3,figure:hover figcaption{color:#FF2E88!important}
+section[aria-label="2025 story"] img:hover{transform:scale(1.02);filter:brightness(1.12);box-shadow:0 0 0 1px #FF2E88,0 0 30px rgba(255,46,136,.4)}
+#links a:hover{color:#FF2E88!important;padding-left:8px}
+#links a:hover span{text-shadow:0 0 10px rgba(255,46,136,.7)}
+header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
+}
+@media (prefers-reduced-motion: reduce){a,button,article img,figure img,section[aria-label="2025 story"] img{transition:none!important;animation:none!important;transform:none!important}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}[aria-label="Compact navigation"]{transition:none}.wuha-glow{animation:none}}
+
+.wuha-pre{opacity:0;transform:translateY(28px)}
+.wuha-in{opacity:1;transform:none;transition:opacity 900ms ease,transform 900ms cubic-bezier(.22,.61,.36,1)}
+@keyframes wuhaRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes wuhaRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.wuha-hero>*{animation:wuhaRise 900ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(2){animation-delay:120ms}.wuha-hero>*:nth-child(3){animation:wuhaRule 700ms 380ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(4){animation-delay:420ms}.wuha-hero>*:nth-child(5){animation-delay:500ms}.wuha-hero>*:nth-child(6){animation-delay:580ms}.wuha-hero>*:nth-child(n+7){animation-delay:680ms}
+@media (prefers-reduced-motion: reduce){.wuha-pre{opacity:1;transform:none}.wuha-hero>*{animation:none!important}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-size: 16px; line-height: 1.6;">
+
+<header style="background: #0A0A0A; border-bottom: 1px solid #1E1E1E;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 26px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;">
+    <a href="#top" aria-label="WUHA home" style="display: inline-flex; align-items: center; min-height: 44px;"><img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA" style="height: 40px; width: auto; display: block;"></a>
+    <nav aria-label="Main navigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;">
+      <a href="#oursongs" style="color: #F5F5F5; text-decoration: none;">Music</a>
+      <a href="#watch" style="color: #F5F5F5; text-decoration: none;">Watch</a>
+      <a href="#about" style="color: #F5F5F5; text-decoration: none;">About</a>
+      <a href="#airplays" style="color: #F5F5F5; text-decoration: none;">On air</a>
+      <a href="Press.dc.html" style="color: #F5F5F5; text-decoration: none;">Press</a>
+      <a href="#newsletter" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600;">Don't miss a beat</a>
+    </nav>
+  </div>
+</header>
+
+<div aria-hidden="{{navHidden}}" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(10,10,10,0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(245,245,245,0.08); transform: {{navTransform}}; opacity: {{navOpacity}}; visibility: {{navVisibility}}; transition: transform 450ms cubic-bezier(.22,.61,.36,1), opacity 450ms ease, visibility 0s linear {{navDelay}};">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 6px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px;">
+    <a href="#top" aria-label="Back to top" tabindex="{{navTab}}" style="display: inline-flex; align-items: center; min-height: 44px;"><img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="" style="height: 20px; width: auto; display: block;"></a>
+    <nav aria-label="Compact navigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;">
+      <a href="#oursongs" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">Music</a>
+      <a href="#watch" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">Watch</a>
+      <a href="#about" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">About</a>
+      <a href="#airplays" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">On air</a>
+      <a href="Press.dc.html" tabindex="{{navTab}}" style="color: #F5F5F5; text-decoration: none;">Press</a>
+      <a href="#newsletter" tabindex="{{navTab}}" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600;">Don't miss a beat</a>
+    </nav>
+  </div>
+</div>
+
+<section id="top" style="position: relative; background: #0A0A0A; overflow: hidden; border-bottom: 1px solid #1E1E1E;">
+  <img src="/_blob/d348640da877f8e61d26a21b2298d9b1" alt="The two WUHA members in black and white with pink sunglasses and a pink neon glow, facing each other from the left and right edge" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 42% 70% at 50% 50%, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0) 100%), linear-gradient(180deg, rgba(10,10,10,0) 70%, #0A0A0A 100%);" aria-hidden="true"></div>
+  <div class="wuha-glow" style="position: absolute; left: 50%; top: 50%; width: 640px; height: 360px; max-width: 70%; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(255,46,136,0.12) 0%, rgba(255,46,136,0) 70%); mix-blend-mode: screen;" aria-hidden="true"></div>
+  <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.14; mix-blend-mode: screen;" aria-hidden="true"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+  <div class="wuha-hero" style="position: relative; max-width: 760px; margin: 0 auto; padding: 128px 32px 72px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px;">
+    <div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.45em; margin-right: -0.45em; text-transform: uppercase; color: #8A8A8A;">Music artist page · Vienna</div>
+    <h1 class="wuha-scan" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(110px, 18vw, 260px); line-height: 0.85; letter-spacing: 0.02em;">WUHA</h1>
+    <span aria-hidden="true" style="width: 120px; height: 3px; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+    <p style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.2; letter-spacing: 0.3em; margin-right: -0.3em; text-transform: uppercase;">International Synthpop Act</p>
+    <p style="margin: -14px 0 0; font-size: 15px; letter-spacing: 0.1em; color: #8A8A8A;">from Vienna, Austria</p>
+    <p style="margin: 0; max-width: 520px; font-size: 17px; color: #D0D0D0;">Connecting listeners across USA, Europe and Asia with modern electronic sounds. Music for the late-night drive and the dance floor.</p>
+    <p style="margin: 0; font-weight: 600; font-size: 15px; letter-spacing: 0.5em; margin-right: -0.5em; text-transform: uppercase;">Feel the Groove</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+      <a href="https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z" fill="#0A0A0A"></path></svg>Listen on Spotify</a>
+      <a href="#oursongs" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border: 1px solid rgba(245,245,245,0.5); color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 500; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Our songs</a>
+    </div>
+    <span aria-hidden="true" style="margin-top: 8px; width: 2px; height: 36px; background: #FF2E88; box-shadow: 0 0 8px rgba(255,46,136,0.8);"></span>
+  </div>
+</section>
+
+<section aria-label="Listen on" style="background: #0A0A0A; border-bottom: 1px solid #1E1E1E;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 44px;">
+    <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Listen on</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px 36px; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.08em; text-transform: uppercase;">
+      <a href="https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ" style="color: #BDBDBD; text-decoration: none;">Spotify</a>
+      <a href="https://music.apple.com/at/artist/wuha/1790726364" style="color: #BDBDBD; text-decoration: none;">Apple Music</a>
+      <a href="https://music.amazon.de/artists/B0DT53D71V/wuha" style="color: #BDBDBD; text-decoration: none;">Amazon Music</a>
+      <a href="https://www.youtube.com/@wuha_music" style="color: #BDBDBD; text-decoration: none;">YouTube</a>
+      <a href="https://soundcloud.com/wuha-music" style="color: #BDBDBD; text-decoration: none;">SoundCloud</a>
+    </div>
+  </div>
+</section>
+
+<section id="oursongs" style="max-width: 1280px; margin: 0 auto; padding: 104px 32px 40px; display: flex; flex-direction: column; gap: 56px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center;">
+    <div style="flex: 0 1 480px; min-width: 0; max-width: 100%; position: relative;">
+      <div class="wuha-glow" style="position: absolute; inset: -40px; border-radius: 50%; background: radial-gradient(circle, rgba(255,46,136,0.28) 0%, rgba(255,46,136,0) 65%);" aria-hidden="true"></div>
+      <img src="/_blob/3bbda600832c743d6db2d0f28cbc2bb1" alt="Losing My Shape cover, WUHA" style="position: relative; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;">
+    </div>
+    <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">New single · 2026-08-28</span>
+      <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 7vw, 96px); line-height: 0.92; letter-spacing: 0.02em; text-transform: uppercase;">Losing My Shape</h2>
+      <p style="margin: 0; max-width: 520px; color: #D0D0D0; font-size: 18px;">The fragile moment when dreams, memories and human connections slowly begin to fade, when everything familiar starts to lose its outline.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <sc-for list="{{featured.links}}" as="l" hint-placeholder-count="5">
+          <a href="{{l.url}}" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; border: 1px solid {{l.border}}; background: {{l.bg}}; color: {{l.fg}}; text-decoration: none; border-radius: 2px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">{{l.label}}</a>
+        </sc-for>
+      </div>
+      <a href="Song-LosingMyShape.dc.html" style="align-self: flex-start; font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; padding-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">Story, lyrics &amp; video <span aria-hidden="true">→</span></a>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A8A8A;">ISRC QT6HM2642100</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid #F5F5F5; padding-bottom: 16px;">
+      <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Our songs</h2>
+      <a href="https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ" style="font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; padding-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">All songs on Spotify</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 36px 28px;">
+      <sc-for list="{{songs}}" as="s" hint-placeholder-count="5">
+        <article style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+          <a href="Song-LosingMyShape.dc.html" aria-label="{{s.title}}: song page" style="display: block;"><img src="{{s.cover}}" alt="{{s.alt}}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #1E1E1E;"></a>
+          <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; color: #FF2E88;">{{s.date}}</span>
+          <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">{{s.title}}</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; font-weight: 500;">
+            <sc-for list="{{s.links}}" as="l" hint-placeholder-count="5">
+              <a href="{{l.url}}" style="display: inline-flex; align-items: center; min-height: 32px; color: #D0D0D0; text-decoration: none; border-bottom: 1px solid #3A3A3A;">{{l.label}}</a>
+            </sc-for>
+          </div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8A8A; line-height: 1.5; white-space: pre-line;">{{s.codes}}</span>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Newsletter teaser" style="border-top: 1px solid #1E1E1E; border-bottom: 1px solid #1E1E1E; margin-top: 56px;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 36px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Newsletter</span>
+      <p style="margin: 0; font-family: Anton, Impact, sans-serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">Don't miss a beat.</p>
+    </div>
+    <a href="#newsletter" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Join the newsletter</a>
+  </div>
+</section>
+
+<section id="watch" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 40px; display: flex; flex-direction: column; gap: 32px;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+    <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Watch</h2>
+    <a href="https://www.youtube.com/@wuha_music" style="font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; padding-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px;">YouTube channel</a>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+    <sc-for list="{{videos}}" as="v" hint-placeholder-count="4">
+      <article style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+        <a href="{{v.url}}" aria-label="Play {{v.title}} on YouTube" style="position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; background: #1E1E1E;">
+          <img src="{{v.cover}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.55);">
+          <span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; border: 1px solid rgba(245,245,245,0.8); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 14 14"><path d="M3.5 1.5v11l9-5.5z" fill="#F5F5F5"></path></svg></span>
+        </a>
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">{{v.kind}}</span>
+        <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">{{v.title}}</h3>
+      </article>
+    </sc-for>
+  </div>
+  <p style="margin: 0; font-size: 13px; color: #8A8A8A;">Videos load from YouTube only after you click play.</p>
+</section>
+
+<section id="about" style="position: relative; background: #0A0A0A; margin-top: 72px; border-top: 1px solid #1E1E1E; border-bottom: 1px solid #1E1E1E; overflow: hidden;">
+  <div class="wuha-glow" style="position: absolute; left: 50%; bottom: -280px; width: 1000px; height: 560px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(255,46,136,0.24) 0%, rgba(255,46,136,0) 70%);" aria-hidden="true"></div>
+  <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 56px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center;">
+      <img src="/_blob/79725613c1c4b3c60368a767808dae1d" alt="Andreas (left) and Wolfgang (right) of WUHA" style="flex: 1 1 480px; min-width: 0; max-width: 100%; aspect-ratio: 1024 / 670; object-fit: cover; display: block; filter: grayscale(1) contrast(1.2);">
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">About WUHA</span>
+        <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 60px); line-height: 0.98; letter-spacing: 0.02em; text-transform: uppercase;">A shared history that began on stage.</h2>
+        <p style="margin: 0; color: #D0D0D0;">The Viennese production team WUHA unites a love for music with a shared history that began on stage and now continues to shine in a new light. As singers, musicians, songwriters and producers, Wolfgang and Andreas bring together their experience from live performance, studio work and film production to create a truly unique sound.</p>
+        <p style="margin: 0; color: #D0D0D0;">Raised in Vienna, the capital of classical music, the two met by chance in a music store. The spark was immediate: "Let's rock!" became their motto, and their first band, Cinderella, was born. With an average age of just 17, they played band contests, concerts and open-air festivals. Later, with their professional Top-40 band Broadway, they toured Germany, Austria, Italy, Switzerland and more.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #FF2E88; padding-top: 18px;"><strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase;">Andreas</strong><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Vocals · Music · Songwriting · Production</span><span style="color: #D0D0D0;">Made a name for himself as a sound engineer in Austrian television and cinema.</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #FF2E88; padding-top: 18px;"><strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase;">Wolfgang</strong><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Vocals · Guitar · Songwriting · Production</span><span style="color: #D0D0D0;">Moved to the U.S. and worked in renowned studios alongside producers like Peter Wolf. Plays the guitar solo on "Rainbow Eyes" and the guitar on "Caroline".</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #FF2E88; padding-top: 18px;"><strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase;">2025: the reunion</strong><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Funk · Soul · Rock</span><span style="color: #D0D0D0;">Matured songs and new visions. The analog soul of their roots meets modern production. Honest, handcrafted music.</span></div>
+    </div>
+    <p style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 9vw, 132px); line-height: 0.9; letter-spacing: 0.02em; text-transform: uppercase;"><span class="wuha-scan">Feel the</span> <span class="wuha-neon">Groove</span></p>
+    <p style="margin: 0; max-width: 620px; color: #BDBDBD;">WUHA stands for authentic sound, creative diversity, and a passion for keeping music alive.</p>
+  </div>
+</section>
+
+<div style="position: relative; overflow: hidden; background: #0A0A0A;">
+<img src="/_blob/87d984b7eb8c952f8ce7997636c2be55" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0A 0%, rgba(10,10,10,0.15) 8%, rgba(10,10,10,0.25) 22%, rgba(10,10,10,0.6) 45%, rgba(10,10,10,0.72) 80%, #0A0A0A 100%);"></div>
+<section id="airplays" aria-label="Airplays" style="position: relative; height: 520px; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 45% 55% at 50% 50%, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 75%);"></div>
+  <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 0 24px;">
+    <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.45em; margin-right: -0.45em; text-transform: uppercase; color: #BDBDBD;">On air · in numbers</span>
+    <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: 0.02em; text-transform: uppercase;"><span class="wuha-scan">Air</span><span class="wuha-neon">plays</span></h2>
+    <span aria-hidden="true" style="width: 80px; height: 2px; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+    <p style="margin: 0; max-width: 440px; color: #D0D0D0;">From Mexico, Venezuela and Uganda to Los Angeles.</p>
+  </div>
+</section>
+
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 32px 32px 40px; display: flex; flex-direction: column; gap: 32px;">
+  <div role="region" aria-label="Airplays" tabindex="0" style="overflow-x: auto; padding-bottom: 12px;">
+    <div style="display: flex; gap: 16px; width: max-content;">
+      <sc-for list="{{airplays}}" as="a" hint-placeholder-count="9">
+        <figure style="margin: 0; width: 200px; display: flex; flex-direction: column; gap: 10px;">
+          <img src="{{a.img}}" alt="{{a.alt}}" style="width: 200px; aspect-ratio: 768 / 1365; object-fit: cover; display: block; background: #1E1E1E;">
+          <figcaption style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #BDBDBD;">{{a.name}}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; background: rgba(10,10,10,0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(245,245,245,0.12); padding: 40px;">
+    <img src="/_blob/e7a16fc6c7974a1092b684b76b0a948d" alt="Breaking Sound Radio logo" style="flex: 0 0 auto; width: 120px; height: 120px; object-fit: contain; display: block; background: #F5F5F5;">
+    <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Interview · Breaking Sound Radio · Los Angeles</span>
+      <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">Artist Spotlight 2025</h3>
+      <p style="margin: 0; color: #D0D0D0;">We are very proud to have been invited to an Artist Spotlight radio interview. The spotlight is a 2-minute feature in high rotation on air, reaching a global audience of over 750,000 monthly listeners.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <span style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1px solid #8A8A8A; border-radius: 2px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;"><svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z" fill="#F5F5F5"></path></svg>[Audio excerpt]</span>
+        <a href="https://www.breakingsound.com/radio" style="font-weight: 600; text-decoration: none; border-bottom: 2px solid #FF2E88; font-size: 14px;">Listen to BSR</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section id="numbers" aria-label="WUHA in numbers" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 40px; display: flex; flex-direction: column; gap: 40px;">
+  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;">
+    <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; letter-spacing: 0.45em; margin-right: -0.45em; color: #8A8A8A;">Listeners around the world</span>
+    <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 7vw, 96px); line-height: 0.9; letter-spacing: 0.02em; text-transform: uppercase;"><span class="wuha-scan">WUHA in</span> <span class="wuha-neon">numbers</span></h2>
+    <span aria-hidden="true" style="width: 80px; height: 2px; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: #1E1E1E; border: 2px solid #1E1E1E;">
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; background: #0A0A0A;">
+        <strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: 0.02em; color: #FF2E88; text-shadow: 0 0 18px rgba(255,46,136,0.55); font-variant-numeric: tabular-nums; ">{{num.fans}}</strong>
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #BDBDBD;">Fans on all channels</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; background: #0A0A0A;">
+        <strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; ">{{num.playlists}}</strong>
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #BDBDBD;">Spotify playlists</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; background: #0A0A0A;">
+        <strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; ">{{num.followers}}</strong>
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #BDBDBD;">Playlist followers</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; background: #0A0A0A;">
+        <strong style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; ">{{num.placements}}</strong>
+        <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #BDBDBD;">Playlist placements</span>
+      </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 48px 64px;">
+    <div style="flex: 1.4 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Found in playlists</span>
+      <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 34px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Top playlists by followers</h3>
+      <ol style="margin: 0; padding: 0; list-style: none; border-top: 2px solid #F5F5F5;">
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">Dance Aura 2026</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Nothing Is Forever</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">4,199</span></li>
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">Pop Island</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Rainbow Eyes EDM Club Mix</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">2,813</span></li>
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">Fresh Music Arena</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Nothing Is Forever</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">2,099</span></li>
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">International Hits</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Rainbow Eyes EDM Club Mix</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">1,768</span></li>
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">International Hits</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Rainbow Eyes EDM Club Mix</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">1,768</span></li>
+        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 1 1 220px; min-width: 0; font-weight: 600;">2026 | Just Hit Shuffle</span><span style="flex: 1 1 200px; min-width: 0; color: #8A8A8A; font-size: 14px;">Losing My Shape</span><span style="flex: 0 0 auto; font-family: Anton, Impact, sans-serif; font-size: 20px; letter-spacing: 0.04em;">1,674</span></li>
+      </ol>
+    </div>
+    <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Top countries</span>
+      <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 34px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Where WUHA is heard</h3>
+      <ol style="margin: 0; padding: 0; list-style: none; border-top: 2px solid #F5F5F5;">
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #FF2E88;">01</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Italy</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Europe</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #FF2E88;">02</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">USA</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Americas</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #FF2E88;">03</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Philippines</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Southeast Asia</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">04</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Indonesia</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Southeast Asia</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">05</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Malaysia</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Southeast Asia</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">06</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Austria</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Europe</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">07</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Spain</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Europe</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">08</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Brazil</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Americas</span></li>
+        <li style="display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #1E1E1E;"><span style="flex: 0 0 32px; font-family: Anton, Impact, sans-serif; font-size: 20px; color: #5A5A5A;">09</span><span style="flex: 1 1 auto; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Colombia</span><span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3em; color: #8A8A8A;">Americas</span></li>
+      </ol>
+    </div>
+  </div>
+  <p style="margin: 0; font-size: 13px; color: #8A8A8A;">Spotify, Facebook, TikTok, Instagram, SoundCloud, YouTube, WhatsApp, Bandsintown · updated daily · as of 19.11.2026</p>
+</section>
+
+<section id="newsletter" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 40px;">
+  <div style="position: relative; overflow: hidden; background: #141414; border: 1px solid #1E1E1E; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 40px 64px;">
+    <div class="wuha-glow" style="position: absolute; right: -120px; top: -120px; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(255,46,136,0.3) 0%, rgba(255,46,136,0) 70%);" aria-hidden="true"></div>
+    <div style="position: relative; flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">Newsletter</span>
+      <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 68px); line-height: 0.95; letter-spacing: 0.02em; text-transform: uppercase;">Don't miss a beat</h2>
+      <p style="margin: 0; color: #D0D0D0; max-width: 460px;">New songs, videos and stories from Vienna, straight to your inbox.</p>
+    </div>
+    <form style="position: relative; flex: 1.2 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 18px; align-self: center;" onSubmit="{{submit}}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Email<input type="email" required autocomplete="email" style="min-height: 48px; padding: 0 14px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"></label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Language<select style="min-height: 48px; padding: 0 10px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"><option>English</option><option>Deutsch</option></select></label>
+      </div>
+      <p style="margin: 0; font-size: 14px; color: #BDBDBD;">We don't spam. Read our <a href="https://www.wuha.world/privacy-policy/" style="color: #F5F5F5;">privacy policy</a> for more info.</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+        <button type="submit" style="min-height: 52px; padding: 0 28px; background: #FF2E88; color: #0A0A0A; border: 0; border-radius: 2px; font: inherit; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;">Subscribe</button>
+        <a href="https://whatsapp.com/channel/0029VbBXY1BC6Zvj8IFkdb3A" style="display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; text-decoration: none; border-bottom: 1px solid #8A8A8A;">Or follow our WhatsApp channel</a>
+        <sc-if value="{{sent}}" hint-placeholder-val="{{false}}"><span role="status" style="color: #FF2E88; font-weight: 600;">Check your inbox or spam folder to confirm your subscription.</span></sc-if>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="links" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 112px; display: flex; flex-wrap: wrap; gap: 40px 64px;">
+  <div id="contact" style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Booking · Press · Radio</span>
+    <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Contact &amp; press</h2>
+    <a href="mailto:contact@wuha.world" style="font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(26px, 3vw, 38px); letter-spacing: 0.03em; text-decoration: none; border-bottom: 2px solid #FF2E88; align-self: flex-start; padding-bottom: 4px;">contact@wuha.world</a>
+    <a href="Press.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 16px; padding: 20px 22px; border: 1px solid #3A3A3A; text-decoration: none;"><span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;">Press &amp; radio kit</span><span style="font-size: 14px; color: #BDBDBD;">Bio, photos, logo, covers, airplays</span></span><span aria-hidden="true" style="font-size: 22px;">→</span></a>
+  </div>
+  <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Links · @wuha_music</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); column-gap: 24px; border-top: 1px solid #1E1E1E;">
+      <sc-for list="{{channels}}" as="ch" hint-placeholder-count="9">
+        <a href="{{ch.url}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #1E1E1E; text-decoration: none; font-weight: 500;">{{ch.label}}<span aria-hidden="true">→</span></a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<nav class="wuha-mbar" aria-label="Quick links" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(10,10,10,0.94); border-top: 1px solid #1E1E1E;">
+  <a href="https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ" style="flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">Listen</a>
+  <a href="#newsletter" style="flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border: 1px solid #8A8A8A; color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">Newsletter</a>
+</nav>
+
+<footer style="background: #0A0A0A; color: #8A8A8A; font-size: 14px; border-top: 1px solid #1E1E1E;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 48px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA" style="height: 26px; width: auto; display: block; align-self: flex-start;">
+      <span>Feel the Groove · Vienna, Austria · All rights reserved</span>
+    </div>
+    <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 10px 28px;">
+      <a href="Press.dc.html" style="color: #BDBDBD;">Press</a>
+      <a href="Listen.dc.html" style="color: #BDBDBD;">Listen links</a>
+      <a href="https://www.wuha.world/privacy-policy/" style="color: #BDBDBD;">Privacy policy</a>
+      <a href="https://www.wuha.world/imprint/" style="color: #BDBDBD;">Imprint</a>
+      <a href="#top" style="color: #BDBDBD;">Cookie settings</a>
+    </nav>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sent: false, compact: false, story: 'losing', countP: 1 };
+    this.lastY = 0;
+    this.onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const compact = y > 140;
+      if (compact !== this.state.compact) this.setState({ compact });
+    };
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.startCount();
+    this.revealSections();
+  }
+  revealSections() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const els = Array.from(document.querySelectorAll('section > div, section > h2, section > article, footer > div')).filter((el) => !el.closest('.wuha-hero') && el.getBoundingClientRect().top > window.innerHeight);
+    els.forEach((el) => el.classList.add('wuha-pre'));
+    this.rio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('wuha-in'); e.target.classList.remove('wuha-pre'); this.rio.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => this.rio.observe(el));
+  }
+  startCount() {
+    const el = document.getElementById('numbers');
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!el || reduce || !('IntersectionObserver' in window)) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) return;
+    this.setState({ countP: 0 });
+    this.io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      this.io.disconnect();
+      const t0 = performance.now(), dur = 1800;
+      const step = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        this.setState({ countP: 1 - Math.pow(1 - p, 3) });
+        if (p < 1) this.raf = requestAnimationFrame(step);
+      };
+      this.raf = requestAnimationFrame(step);
+    }, { threshold: 0.35 });
+    this.io.observe(el);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+    if (this.rio) this.rio.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+  renderVals() {
+    const c = this.state.compact;
+    const L = (sp, sc, ap, yt, am) => [
+      { label: 'Spotify', url: sp }, { label: 'SoundCloud', url: sc }, { label: 'Apple Music', url: ap },
+      { label: 'YouTube', url: yt }, { label: 'Amazon Music', url: am }
+    ];
+    const cover = {
+      losing: '/_blob/3bbda600832c743d6db2d0f28cbc2bb1', nothing: '/_blob/e0081c817ef9819429a465602300dbb7',
+      rainbowClub: '/_blob/5aef3926b9204320f9ad44580d176857', rainbow: '/_blob/b19370bc642c32855243f364747955b1',
+      carolineClub: '/_blob/3908e2f16c12f510fa6c7bb08b6b5da0', caroline: '/_blob/5767883bccdb2a18fa12e16ad23938c1'
+    };
+    const featuredLinks = L(
+      'https://open.spotify.com/track/16n7RpZmUyQnW5STC019jN', 'https://on.soundcloud.com/C70rlKUhHAFgGp354G',
+      'https://music.apple.com/at/song/losing-my-shape/6802519203', 'https://www.youtube.com/watch?v=MJXLZWHuYuo',
+      'https://amazon.de/music/player/albums/B0HFLL9X8Q'
+    ).map((l, i) => ({ ...l, bg: i === 0 ? '#FF2E88' : 'transparent', fg: i === 0 ? '#0A0A0A' : '#F5F5F5', border: i === 0 ? '#FF2E88' : '#8A8A8A' }));
+    const songs = [
+      { cover: cover.nothing, alt: 'Nothing Is Forever cover', date: '2026-06-04', title: 'Nothing Is Forever', codes: 'ISRC QZWFX2661666\nISWC T-985.441.708-6',
+        links: L('https://open.spotify.com/album/6PzTvdEGnA6TUWvCzrE0cA', 'https://on.soundcloud.com/k8gkXMQsF5Ucpz1Hmo', 'https://music.apple.com/at/album/nothing-is-forever-single/6767017107', 'https://youtu.be/6fRO12NRER8', 'https://amazon.de/music/player/albums/B0GZJ75PF7') },
+      { cover: cover.rainbowClub, alt: 'Rainbow Eyes EDM Club Mix cover', date: '2025-11-27', title: 'Rainbow Eyes EDM Club Mix', codes: 'ISRC QT3FB2543559\nISWC T-335.815.048-4',
+        links: L('https://open.spotify.com/album/5nGvGJoMtn1vQ4MERa67bE', 'https://soundcloud.com/wuha-music/rainbow-eyes-edm-club-mix', 'https://music.apple.com/at/song/rainbow-eyes-edm-club-mix/1845662251', 'https://youtu.be/OG51DSM73gk', 'https://amazon.com/music/player/tracks/B0FVJ1BJKH') },
+      { cover: cover.rainbow, alt: 'Rainbow Eyes cover', date: '2025-05-29', title: 'Rainbow Eyes', codes: 'ISRC QZNWY2504889\nISWC T-332.322.688-2',
+        links: L('https://open.spotify.com/track/0MfSlR26pT9XLhfOCopd6Q', 'https://soundcloud.com/wuha-music/rainbow-eyes', 'https://music.apple.com/at/song/rainbow-eyes/1813681695', 'https://www.youtube.com/watch?v=x_IUrgaaneo', 'https://amazon.com/music/player/tracks/B0F889RYQD') },
+      { cover: cover.carolineClub, alt: 'Caroline Extended Club Mix cover', date: '2025-04-30', title: 'Caroline Extended Club Mix', codes: 'ISRC QZMEM2546561\nISWC T-331.410.329-8',
+        links: L('https://open.spotify.com/track/6RmhEHvWrRInEDPOYtmfQX', 'https://soundcloud.com/wuha-music/caroline-feat-mark', 'https://music.apple.com/at/song/caroline-extended-club-mix/1807645791', 'https://www.youtube.com/playlist?list=OLAK5uy_mH9DbpL8zCIJ83hdJ5w_mE5YlQbq0OaG4', 'https://amazon.com/music/player/tracks/B0F49L1S9N') },
+      { cover: cover.caroline, alt: 'Caroline feat. Marc Voc cover', date: '2025-02-28', title: 'Caroline (feat. Marc Voc)', codes: 'ISRC QZDA72504487\nISWC T-330.792.953-5',
+        links: L('https://open.spotify.com/track/7rPiPqKrZdgBROQXhWjUPz', 'https://on.soundcloud.com/z90jXUje4AUjul09lh', 'https://music.apple.com/at/song/caroline-feat-mark-voc/1793828157', 'https://www.youtube.com/watch?v=S29j0sEb558', 'https://amazon.com/music/player/tracks/B0DVDXZ5S4') }
+    ];
+    const P = (t) => ({ isText: true, isHead: false, text: t });
+    const H = (t) => ({ isText: false, isHead: true, text: t });
+    const stories = {
+      losing: { label: 'Losing My Shape', cover: cover.losing, alt: 'Losing My Shape cover', kicker: 'The story behind', title: 'Losing My Shape', blocks: [
+        P('"Losing My Shape" reflects the fragile moment when dreams, memories and human connections slowly begin to fade, when everything familiar starts to lose its outline.'),
+        P('Born in a small studio room in Purkersdorf, near Vienna, the song began as an intimate recording with only a few musicians, a quiet space and a powerful emotional atmosphere. What started as a fragile demo has now found its moment to step into the world.'),
+        P('The song takes us on a haunting journey through uncertainty, isolation and the search for direction. It reflects the moments when life feels like drifting in endless waters, when dreams lose their form, familiar faces become distant, and the path ahead disappears into the darkness.'),
+        P('Yet within this feeling of being lost lies a deeper human struggle: the desire to hold on, to keep rising from the cold, and to find meaning when everything seems to fade away.'),
+        P('"Losing My Shape" is a reflection on change, vulnerability and the search for connection in a world where we sometimes feel ourselves slowly disappearing.')
+      ] },
+      nothing: { label: 'Nothing Is Forever', cover: cover.nothing, alt: 'Nothing Is Forever cover', kicker: 'As a reminder', title: 'Nothing Is Forever', blocks: [
+        P('"Nothing Is Forever" is an anthem about impermanence. Driven by energetic rock elements and a pulsating 132 BPM rhythm, the track captures both intensity and emotion.'),
+        P('It explores the constant ups and downs of life: love and laughter, pain and silence, sunshine and rain. Nothing stays the same, everything is in motion, and that is exactly where the beauty of the moment lies. The song reminds us to embrace the present before it slips away.'),
+        P('It is dedicated to Andreas’ late father, whom he deeply admired as a role model and with whom he shared many years performing together on stage. In loving memory.')
+      ] },
+      rainbow: { label: 'Rainbow Eyes', cover: cover.rainbow, alt: 'Rainbow Eyes cover', kicker: 'The magic of beautiful eyes', title: 'Rainbow Eyes', blocks: [
+        P('With "Rainbow Eyes", WUHA delivers an emotional pop anthem full of longing, wonder and warmth. The song captures the intensity of a single look, the kind that leaves you breathless and lost in a beautiful mystery. "Rainbow Eyes" becomes a symbol for beauty, depth and the magical uncertainty of love.'),
+        P('Driven by a catchy melody and heartfelt lyrics, the track floats between dreamy verses and a powerful chorus. With screaming bends and searing tone, Wolfgang unleashes a guitar solo that turns the track into a full-on rock anthem. Soft harmonies, a memorable hook and the beautiful background voice of Petra Suk, known as Suki from Two In One, round it off.'),
+        P('Musically, "Rainbow Eyes" blends pop and soft rock with a touch of 80s nostalgia: modern in production, timeless in feeling.')
+      ] },
+      caroline: { label: 'Caroline', cover: cover.caroline, alt: 'Caroline feat. Marc Voc cover', kicker: 'Adoration of a girl', title: 'Caroline', blocks: [
+        P('This song was written in 1989 when I was in love with a girl I regularly met at my favourite club, Poeblo, on Karlsplatz in Vienna. Together with her friend Petra, she was always my personal highlight in the club. The way she performed prompted me to write a song for her. We were good friends and often talked for hours, but it was never enough for a kiss or a relationship. I was still far too shy back then. My band Staccato liked the song, and we played it successfully at the Austrian band competition Popodrom. I soon lost sight of Caroline, but the song stayed with me as a reminder of her.'),
+        H('The production and the musicians'),
+        P('In December 2024, a coronavirus infection forced me to quarantine for a week. I used this time to revisit the song and produce it again with modern means: electronically, with Ableton Live and Pro Tools. It has always been my passion to find new sounds that give songs their own character.'),
+        P('In this digital world I was missing analog instruments, so I won over my former band colleague Wolfgang. By then he had national success (Christl Stürmer, Alf Poier, Manuel Ortega, Gernot Pachernigg, Gimme5, The Real Stardust Babies and more) and international experience in the USA with Peter Wolf (Frank Zappa, Commodores, Cliff Richard and more). For me, Wolfgang was always the Austrian Steve Lukather from Toto. His sound and his way of playing are simply brilliant and suit the song.'),
+        P('The music video was lovingly produced by LIFESTYLE TV.'),
+        H('The secret of the lead vocal'),
+        P('It took a long time to find the right voice. First I sang the lead vocal myself, then we tried an AI voice. We still were not happy. After asking people in the music industry, we found a place online to book professional singers. We sent our demo to one of them, he loved it and took the job. He sent us three takes, and the result was exactly what we were looking for: an international dream voice. He works on international projects and needs to remain anonymous, so we gave him the name Marc Voc.'),
+        H('The finish'),
+        P('Caroline was completed in January 2025 and released in February on Spotify, Apple Music, YouTube Music, Amazon, Deezer, TIDAL, TikTok and many more platforms worldwide.'),
+        P('Caroline herself never heard the song, but her best friend at the time did: Petra Suk (Suki), who had a very successful career with the band Two In One. This release closes a circle for me. A love song that began more than three decades ago now shines in new splendour and brings the magic of the past into the present.')
+      ] }
+    };
+    const order = ['losing', 'nothing', 'rainbow', 'caroline'];
+    const cur = this.state.story;
+    const storyTabs = order.map((k) => {
+      const on = k === cur;
+      return { label: stories[k].label, on: on ? 'true' : 'false', bg: on ? '#F5F5F5' : 'transparent', fg: on ? '#0A0A0A' : '#F5F5F5', border: on ? '#F5F5F5' : '#5A5A5A', pick: () => this.setState({ story: k }) };
+    });
+    const air = [
+      ['/_blob/6ec1535fc3532fbbf3da2803c9aed2cf', 'Venezuela'],
+      ['/_blob/98e2a8e2171e801d23b3cfa0bb4dff48', 'Mexico'],
+      ['/_blob/5f759146b5ce452b14ee226a56e65a19', 'Uganda'],
+      ['/_blob/86aa8119fe8f596a10afca94145fd33f', 'CragsRadio'],
+      ['/_blob/8519fa030f3e792b13867da1ad310798', 'Chic Radio Hits'],
+      ['/_blob/6079cabe893ff48e9abd6b50ff0ddeb2', 'SilverMusic Radio'],
+      ['/_blob/792e4e3de1a59e43bd9c5ab7fe576132', 'DHEC'],
+      ['/_blob/13d62547ccde6fe28d4065af18f9b77a', 'Breaking Sound']
+    ];
+    const slideIds = ['3e09bd7eaf18470c935c60adc4000253','4710fa5c033d6f9c4a0a3af5aece28af','3731583dd0588bcf14ec9ed58ca6bb22','993671166a5f9367ab3ce1d87fe4186d','5d13c22d5a3c8dc3efdae7d915b4fae1','601c5da66d987b0d9da63f59df0b398d','8ccaf4aadbc714db7925aaa0988191f1','be9f8cdc7157fbad4666d48d17575e83','614bf89c2eb75f38d7197b5df1e01560','7e9b3697adee5fed279c1f1b5c92d593','82cb62907f724e0c1d2d539a039bfda5'];
+    return {
+      navTransform: c ? 'translateY(0)' : 'translateY(-100%)',
+      navOpacity: c ? '1' : '0',
+      navVisibility: c ? 'visible' : 'hidden',
+      navDelay: c ? '0s' : '450ms',
+      navHidden: c ? 'false' : 'true',
+      navTab: c ? '0' : '-1',
+      sent: this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      videos: [
+        { kind: 'Music video', title: 'Caroline (feat. Marc Voc)', url: 'https://www.youtube.com/watch?v=S29j0sEb558', cover: cover.caroline },
+        { kind: 'Video', title: 'Nothing Is Forever', url: 'https://youtu.be/6fRO12NRER8', cover: cover.nothing },
+        { kind: 'Video', title: 'Rainbow Eyes', url: 'https://www.youtube.com/watch?v=x_IUrgaaneo', cover: cover.rainbow },
+        { kind: 'Video', title: 'Rainbow Eyes EDM Club Mix', url: 'https://youtu.be/OG51DSM73gk', cover: cover.rainbowClub }
+      ],
+      num: (() => {
+        const p = this.state.countP;
+        const f = (n) => Math.round(n * p).toLocaleString('en-US');
+        return { fans: f(1961), playlists: f(70), followers: f(43663), placements: f(85) };
+      })(),
+      featured: { links: featuredLinks },
+      songs,
+      storyTabs,
+      story: stories[cur],
+      airplays: air.map(([img, name]) => ({ img, name, alt: 'WUHA on air: ' + name })),
+      slides: slideIds.map((id, i) => ({ img: '/_blob/' + id, alt: 'WUHA 2025 story, slide ' + (i + 1) })),
+      channels: [
+        { label: 'Spotify', url: 'https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ' },
+        { label: 'SoundCloud', url: 'https://soundcloud.com/wuha-music' },
+        { label: 'Instagram', url: 'https://www.instagram.com/wuha_music/' },
+        { label: 'Facebook', url: 'https://www.facebook.com/wuhamusic/' },
+        { label: 'YouTube', url: 'https://www.youtube.com/@wuha_music' },
+        { label: 'TikTok', url: 'https://www.tiktok.com/@wuha_music' },
+        { label: 'Amazon Music', url: 'https://music.amazon.de/artists/B0DT53D71V/wuha' },
+        { label: 'Apple Music', url: 'https://music.apple.com/at/artist/wuha/1790726364' },
+        { label: 'WhatsApp', url: 'https://whatsapp.com/channel/0029VbBXY1BC6Zvj8IFkdb3A' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

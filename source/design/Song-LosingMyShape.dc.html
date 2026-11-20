@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WUHA Losing My Shape</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+a{color:#F5F5F5}a:hover{color:#FF2E88}
+.wuha-scan{color:transparent;background:repeating-linear-gradient(180deg,#F5F5F5 0 2px,#D9D9D9 2px 4px);-webkit-background-clip:text;background-clip:text}
+a,button{transition:color .25s ease,border-color .25s ease,box-shadow .4s ease,transform .4s ease}
+@media (hover:hover){a[style*="background: #FF2E88"]:hover,button[style*="background: #FF2E88"]:hover{box-shadow:0 0 0 1px #FF2E88,0 0 26px rgba(255,46,136,.65);transform:translateY(-2px)}a[style*="border: 1px solid"]:hover{border-color:#FF2E88!important;color:#FF2E88!important}}
+
+.wuha-pre{opacity:0;transform:translateY(28px)}
+.wuha-in{opacity:1;transform:none;transition:opacity 900ms ease,transform 900ms cubic-bezier(.22,.61,.36,1)}
+@keyframes wuhaRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes wuhaRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.wuha-hero>*{animation:wuhaRise 900ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(2){animation-delay:120ms}.wuha-hero>*:nth-child(3){animation:wuhaRule 700ms 380ms cubic-bezier(.22,.61,.36,1) both}
+.wuha-hero>*:nth-child(4){animation-delay:420ms}.wuha-hero>*:nth-child(5){animation-delay:500ms}.wuha-hero>*:nth-child(6){animation-delay:580ms}.wuha-hero>*:nth-child(n+7){animation-delay:680ms}
+@media (prefers-reduced-motion: reduce){.wuha-pre{opacity:1;transform:none}.wuha-hero>*{animation:none!important}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-size: 16px; line-height: 1.6;">
+
+<header style="position: sticky; top: 0; z-index: 50; background: {{navBg}}; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(245,245,245,0.08); transition: background 400ms ease;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: {{navPad}} 32px; transition: padding 400ms cubic-bezier(.22,.61,.36,1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;">
+    <a href="Main.dc.html" aria-label="WUHA home" style="display: inline-flex; align-items: center; min-height: 44px;"><img src="/_blob/4ec5f2b561783bc0f811b4adc8145815" alt="WUHA" style="height: {{logoH}}; width: auto; display: block; transition: height 400ms cubic-bezier(.22,.61,.36,1);"></a>
+    <a href="Main.dc.html" style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;">← All songs</a>
+  </div>
+</header>
+
+<section style="position: relative; overflow: hidden;">
+  <img src="/_blob/3bbda600832c743d6db2d0f28cbc2bb1" alt="" aria-hidden="true" style="position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(60px) brightness(0.35) saturate(1.2);">
+  <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 72px 32px 80px; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center;">
+    <img src="/_blob/3bbda600832c743d6db2d0f28cbc2bb1" alt="Losing My Shape cover, WUHA" style="flex: 0 1 440px; min-width: 0; max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; box-shadow: 0 30px 80px rgba(0,0,0,0.6);">
+    <div class="wuha-hero" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.45em; text-transform: uppercase; color: #FF2E88;">New single · 28.08.2026</span>
+      <h1 class="wuha-scan" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(64px, 8vw, 120px); line-height: 0.88; letter-spacing: 0.02em; text-transform: uppercase;">Losing My Shape</h1>
+      <span aria-hidden="true" style="width: 80px; height: 2px; background: #FF2E88; box-shadow: 0 0 10px rgba(255,46,136,0.8);"></span>
+      <p style="margin: 0; max-width: 520px; color: #D0D0D0; font-size: 18px;">The fragile moment when dreams, memories and human connections slowly begin to fade.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="https://open.spotify.com/track/16n7RpZmUyQnW5STC019jN" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;">Save on Spotify</a>
+        <a href="https://music.apple.com/at/song/losing-my-shape/6802519203" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; border: 1px solid #8A8A8A; color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Apple Music</a>
+        <a href="https://www.youtube.com/watch?v=MJXLZWHuYuo" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; border: 1px solid #8A8A8A; color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">YouTube</a>
+        <a href="https://amazon.de/music/player/albums/B0HFLL9X8Q" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; border: 1px solid #8A8A8A; color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Amazon</a>
+        <a href="https://on.soundcloud.com/C70rlKUhHAFgGp354G" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; border: 1px solid #8A8A8A; color: #F5F5F5; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">SoundCloud</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Listen" style="max-width: 1280px; margin: 0 auto; padding: 56px 32px 0;">
+  <div style="background: #141414; border: 1px solid #1E1E1E; padding: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; min-height: 120px;">
+    <sc-if value="{{playerOn}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 0; flex: 1 1 300px; color: #D0D0D0;">[Spotify player loads here]</p>
+    </sc-if>
+    <sc-if value="{{playerOff}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{loadPlayer}}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; background: #FF2E88; color: #0A0A0A; border: 0; border-radius: 2px; font: inherit; font-weight: 700; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z" fill="#0A0A0A"></path></svg>Play here</button>
+      <p style="margin: 0; flex: 1 1 300px; font-size: 14px; color: #8A8A8A;">The player loads from Spotify after you click. Spotify may then set cookies.</p>
+    </sc-if>
+  </div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 40px; display: flex; flex-wrap: wrap; gap: 40px 64px;">
+  <div style="flex: 1.4 1 480px; min-width: 0; max-width: 720px; display: flex; flex-direction: column; gap: 18px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #FF2E88;">The story behind</span>
+    <h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 48px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;">Born in a small studio room</h2>
+    <p style="margin: 0; color: #D0D0D0; font-size: 17px;">"Losing My Shape" reflects the fragile moment when dreams, memories and human connections slowly begin to fade, when everything familiar starts to lose its outline.</p>
+    <p style="margin: 0; color: #D0D0D0; font-size: 17px;">Born in a small studio room in Purkersdorf, near Vienna, the song began as an intimate recording with only a few musicians, a quiet space and a powerful emotional atmosphere. What started as a fragile demo has now found its moment to step into the world.</p>
+    <p style="margin: 0; color: #D0D0D0; font-size: 17px;">The song takes us on a haunting journey through uncertainty, isolation and the search for direction. Yet within this feeling of being lost lies a deeper human struggle: the desire to hold on, to keep rising from the cold, and to find meaning when everything seems to fade away.</p>
+  </div>
+  <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">Credits</span>
+    <dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-size: 15px; border-top: 1px solid #1E1E1E; padding-top: 14px;">
+      <dt style="color: #8A8A8A;">Artist</dt><dd style="margin: 0;">WUHA</dd>
+      <dt style="color: #8A8A8A;">Written by</dt><dd style="margin: 0;">[CREDITS]</dd>
+      <dt style="color: #8A8A8A;">Produced by</dt><dd style="margin: 0;">[CREDITS]</dd>
+      <dt style="color: #8A8A8A;">Release</dt><dd style="margin: 0;">28.08.2026</dd>
+      <dt style="color: #8A8A8A;">ISRC</dt><dd style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px;">QT6HM2642100</dd>
+    </dl>
+    <a href="https://www.youtube.com/watch?v=MJXLZWHuYuo" aria-label="Watch Losing My Shape on YouTube" style="position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; margin-top: 12px; background: #1E1E1E;">
+      <img src="/_blob/3bbda600832c743d6db2d0f28cbc2bb1" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.5);">
+      <span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; border: 1px solid rgba(245,245,245,0.8); display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M3.5 1.5v11l9-5.5z" fill="#F5F5F5"></path></svg></span>
+    </a>
+  </div>
+</section>
+
+<section aria-label="Newsletter" style="max-width: 1280px; margin: 0 auto; padding: 48px 32px;">
+  <div style="border-top: 1px solid #1E1E1E; border-bottom: 1px solid #1E1E1E; padding: 32px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;">
+    <p style="margin: 0; font-family: Anton, Impact, sans-serif; font-size: clamp(24px, 3vw, 34px); line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase;">Don't miss a beat.</p>
+    <a href="Main.dc.html#newsletter" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #FF2E88; color: #0A0A0A; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Join the newsletter</a>
+  </div>
+</section>
+
+<section aria-label="More songs" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px 96px; display: flex; flex-direction: column; gap: 20px;">
+  <span style="font-weight: 500; font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: #8A8A8A;">More from WUHA</span>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px;">
+    <a href="Main.dc.html#oursongs" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none;"><img src="/_blob/e0081c817ef9819429a465602300dbb7" alt="Nothing Is Forever cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"><span style="font-family: Anton, Impact, sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase;">Nothing Is Forever</span></a>
+    <a href="Main.dc.html#oursongs" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none;"><img src="/_blob/5aef3926b9204320f9ad44580d176857" alt="Rainbow Eyes EDM Club Mix cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"><span style="font-family: Anton, Impact, sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase;">Rainbow Eyes Club Mix</span></a>
+    <a href="Main.dc.html#oursongs" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none;"><img src="/_blob/b19370bc642c32855243f364747955b1" alt="Rainbow Eyes cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"><span style="font-family: Anton, Impact, sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase;">Rainbow Eyes</span></a>
+    <a href="Main.dc.html#oursongs" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none;"><img src="/_blob/5767883bccdb2a18fa12e16ad23938c1" alt="Caroline cover" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;"><span style="font-family: Anton, Impact, sans-serif; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase;">Caroline</span></a>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid #1E1E1E; color: #8A8A8A; font-size: 14px;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;">
+    <span>WUHA · Feel the Groove · Vienna, Austria</span>
+    <span>Imprint · Privacy policy · Cookie settings</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = Object.assign({ navHide: false }, this.state || {}, { player: false });
+    this.lastY = 0;
+    this.onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const navHide = y > 60;
+      if (navHide !== this.state.navHide) this.setState({ navHide });
+    };
+  }
+  componentDidMount() { window.addEventListener('scroll', this.onScroll, { passive: true }); this.revealSections(); }
+  revealSections() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const els = Array.from(document.querySelectorAll('section > div, section > h2, section > article, footer > div')).filter((el) => !el.closest('.wuha-hero') && el.getBoundingClientRect().top > window.innerHeight);
+    els.forEach((el) => el.classList.add('wuha-pre'));
+    this.rio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('wuha-in'); e.target.classList.remove('wuha-pre'); this.rio.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => this.rio.observe(el));
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); if (this.rio) this.rio.disconnect(); }
+  renderVals() {
+    return {
+      navBg: this.state.navHide ? 'rgba(10,10,10,0.72)' : 'rgba(10,10,10,1)',
+      navPad: this.state.navHide ? '4px' : '22px',
+      logoH: this.state.navHide ? '20px' : '34px',
+      playerOn: this.state.player,
+      playerOff: !this.state.player,
+      loadPlayer: () => this.setState({ player: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
