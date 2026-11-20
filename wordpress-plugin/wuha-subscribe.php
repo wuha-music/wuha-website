@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WUHA Subscribe
  * Description: Newsletter sign-up endpoint for the static wuha.world site. Adds the email to the MailPoet list "English" or "Deutsch" and sends MailPoet's confirmation email (double opt-in).
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: WUHA
  * Requires PHP: 7.4
  */
@@ -14,6 +14,9 @@ if (!defined('ABSPATH')) {
 const WUHA_SUB_ORIGINS = ['https://www.wuha.world', 'https://wuha.world'];
 const WUHA_SUB_LIMIT = 5;          // sign-ups per IP …
 const WUHA_SUB_WINDOW = HOUR_IN_SECONDS; // … per hour
+if (!defined('WUHA_CONFIRMED_URL')) {
+    define('WUHA_CONFIRMED_URL', 'https://www.wuha.world/2027/confirmed/');
+}
 
 // admin-ajax.php is used instead of the REST API, which "Disable REST API" blocks for visitors
 add_action('wp_ajax_nopriv_wuha_subscribe', 'wuha_sub_ajax');
@@ -104,3 +107,28 @@ function wuha_sub_handle(array $in)
     }
     return [['ok' => true], 200];
 }
+
+// After MailPoet has confirmed a subscription, show the WUHA confirmation page instead of the theme page.
+// Only redirects when MailPoet reports the subscriber as "subscribed"; otherwise MailPoet's own page is shown.
+add_action('template_redirect', function () {
+    if (($_GET['mailpoet_page'] ?? '') !== 'subscriptions' || ($_GET['action'] ?? '') !== 'confirm') {
+        return;
+    }
+    if (!class_exists('\\MailPoet\\API\\API') || empty($_GET['data'])) {
+        return;
+    }
+    $data = json_decode(base64_decode(strtr(wp_unslash($_GET['data']), '-_', '+/')), true);
+    $email = is_array($data) && isset($data['email']) ? sanitize_email($data['email']) : '';
+    if (!is_email($email)) {
+        return;
+    }
+    try {
+        $sub = \MailPoet\API\API::MP('v1')->getSubscriber($email);
+    } catch (\Exception $e) {
+        return;
+    }
+    if (($sub['status'] ?? '') === 'subscribed') {
+        wp_redirect(WUHA_CONFIRMED_URL, 302);
+        exit;
+    }
+}, 20);

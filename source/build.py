@@ -14,7 +14,7 @@ os.makedirs(IMG); os.makedirs(FNT)
 
 # ---- assets ---------------------------------------------------------------
 BLOBS = {
- '4ec5f2b561783bc0f811b4adc8145815': (os.path.join(D, 'wuha-logo.png'), 'wuha-logo.png', None),
+ 'b169541fcce3ae349330dd9fb3a7ff7c': (os.path.join(SRC, 'press', 'logo', 'wuha-logo-scanline.svg'), 'wuha-logo.svg', None),
  '3bbda600832c743d6db2d0f28cbc2bb1': (os.path.join(D, 'Cover-Losing-My-Shape-768x768.png'), 'cover-losing-my-shape.webp', 768),
  'e0081c817ef9819429a465602300dbb7': (os.path.join(D, 'Nothing-is-forever-C-Cover-768x768.png'), 'cover-nothing-is-forever.webp', 768),
  '5aef3926b9204320f9ad44580d176857': (os.path.join(D, 'Cover-Rainbow-Eyes-Club-Mix-WUHA-768x768.png'), 'cover-rainbow-eyes-club-mix.webp', 768),
@@ -189,11 +189,35 @@ var b=document.querySelector('[data-if="playerOff"] button');
 if(b)b.addEventListener('click',function(){var on=document.querySelector('[data-if="playerOn"]');on.innerHTML='<iframe title="Spotify player" src="https://open.spotify.com/embed/'+document.body.dataset.embed+'?theme=0" width="100%" height="152" style="border:0;border-radius:12px;flex:1 1 100%" allow="encrypted-media" loading="lazy"></iframe>';on.hidden=false;document.querySelector('[data-if="playerOff"]').hidden=true;});
 })();'''
 
+
+# ---- press downloads ------------------------------------------------------
+import zipfile
+PR = os.path.join(SRC, 'press'); PO = os.path.join(OUT, 'assets', 'press')
+shutil.copytree(PR, PO)
+def zipdir(name, folders):
+    with zipfile.ZipFile(os.path.join(PO, name), 'w', zipfile.ZIP_DEFLATED) as z:
+        for fo in folders:
+            for f in sorted(os.listdir(os.path.join(PR, fo))):
+                z.write(os.path.join(PR, fo, f), os.path.join('WUHA', fo, f))
+zipdir('wuha-covers.zip', ['covers'])
+zipdir('wuha-logo.zip', ['logo'])
+zipdir('wuha-press-kit.zip', ['photos', 'logo', 'covers'])
+DL = {'kit': 'wuha-press-kit.zip', 'covers': 'wuha-covers.zip', 'logo': 'wuha-logo.zip',
+      'key-visual': 'photos/wuha-key-visual.jpg', 'band': 'photos/wuha-band-bw.jpg'}
+for f in os.listdir(os.path.join(PR, 'covers')):
+    DL['cover-' + f[len('wuha-cover-'):-4]] = 'covers/' + f
+def downloads(s, depth):
+    def rep(m):
+        f = DL[m.group(1)]
+        return 'href="%sassets/press/%s" download data-download="%s"' % ('../' * depth, f, os.path.basename(f))
+    return re.sub(r'href="#dl-([\w-]+)"', rep, s)
+
 SONGS = json.load(open(os.path.join(SRC, 'songs.json'), encoding='utf8'))
 PAGES = [
  # source, out dir, depth, title, description
  ('Main.dc.html', '', 0, 'WUHA · International Synthpop Act from Vienna', 'WUHA is a synthpop band from Vienna, Austria. Music for the late-night drive and the dance floor. Feel the Groove.'),
  ('Press.dc.html', 'press', 1, 'Press kit · WUHA', 'WUHA press kit: bio, photos, logo, covers and facts for press, radio and playlist curators.'),
+ ('Confirmed.dc.html', 'confirmed', 1, 'Subscription confirmed · WUHA', 'Thank you for subscribing to the WUHA newsletter.'),
  ('Listen.dc.html', 'listen', 1, 'Listen · WUHA', 'Listen to WUHA on Spotify, Apple Music, YouTube, Amazon Music and SoundCloud.'),
 ]
 for x in SONGS:
@@ -232,7 +256,7 @@ for page in PAGES:
     html = re.sub(r'/_blob/([0-9a-f]{32})', lambda m: B(m.group(1), depth), html)
     # song cover/blob refs inside data were ids: map bare ids too
     html = re.sub(r'(src|href)="([0-9a-f]{32})"', lambda m: f'{m.group(1)}="{B(m.group(2), depth)}"', html)
-    html = links(html, depth)
+    html = downloads(links(html, depth), depth)
     html = html.replace("font-family: 'JetBrains Mono', monospace;", "font-family: ui-monospace, Menlo, Consolas, monospace;")
     js = REVEAL_JS
     if src == 'Main.dc.html':
