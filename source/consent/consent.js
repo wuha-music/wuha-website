@@ -37,9 +37,20 @@
   window.addEventListener('cc:onChange', syncBtn);
   window.addEventListener('cc:onModalHide', syncBtn);
 
+  // Banner only for visitors in Europe (EU/EEA, UK, Switzerland and EU overseas regions).
+  // Detected from the device time zone, no external lookup. Unknown time zone counts as Europe.
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var EU_OTHER = ['Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores', 'Atlantic/Faroe', 'Atlantic/Reykjavik',
+    'Arctic/Longyearbyen', 'Asia/Nicosia', 'Asia/Famagusta', 'Indian/Reunion', 'Indian/Mayotte',
+    'America/Guadeloupe', 'America/Martinique', 'America/Cayenne', 'America/St_Barthelemy', 'America/Marigot'];
+  var inEurope = !tz || /^Europe\//.test(tz) || EU_OTHER.indexOf(tz) !== -1;
+  window.wuhaInEurope = inEurope;
+
   CookieConsent.run({
     revision: 1,
     disablePageInteraction: true,
+    autoShow: inEurope,
     cookie: { name: 'wuha_consent', expiresAfterDays: 182 },
     guiOptions: {
       consentModal: { layout: 'box', position: 'middle center', equalWeightButtons: true, flipButtons: false },
@@ -82,5 +93,8 @@
         }
       }
     }
-  }).then(syncBtn);
+  }).then(function () {
+    if (!inEurope && !CookieConsent.validConsent()) CookieConsent.acceptCategory('all');
+    syncBtn();
+  });
 })();

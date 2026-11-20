@@ -29,3 +29,4 @@ Kategorien: Notwendig · Statistics (Google Analytics) · Marketing (Meta Pixel,
 Vor der Zustimmung lädt nichts von fremden Servern. Google Tag Manager `GTM-5JK6VLZG` lädt erst nach Zustimmung zu Statistics oder Marketing.
 Google Consent Mode v2: Standard „denied“, nach der Wahl `gtag('consent','update', …)`. Ereignis `wuha_consent` im dataLayer.
 Die neue Seite setzt `wuha_site: 'new'` im dataLayer, damit der alte Banner-Tag im Tag Manager hier nicht feuert.
+Der Banner erscheint nur in Europa (Zeitzone des Geräts: Europe/*, Kanaren, Madeira, Azoren, Färöer, Island, Zypern, EU-Überseegebiete; unbekannt = Europa). Außerhalb Europas werden alle Kategorien automatisch erlaubt, der Cookie-Knopf bleibt zum Ändern sichtbar.
