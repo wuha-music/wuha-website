@@ -37,14 +37,18 @@
   window.addEventListener('cc:onChange', syncBtn);
   window.addEventListener('cc:onModalHide', syncBtn);
 
-  // Banner only for visitors in Europe (EU/EEA, UK, Switzerland and EU overseas regions).
-  // Detected from the device time zone, no external lookup. Unknown time zone counts as Europe.
+  // Banner only for visitors in the 27 EU countries (incl. Canaries, Madeira, Azores, Ceuta and EU overseas regions).
+  // Detected from the device time zone, no external lookup. Unknown time zone counts as EU.
   var tz = '';
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
-  var EU_OTHER = ['Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores', 'Atlantic/Faroe', 'Atlantic/Reykjavik',
-    'Arctic/Longyearbyen', 'Asia/Nicosia', 'Asia/Famagusta', 'Indian/Reunion', 'Indian/Mayotte',
-    'America/Guadeloupe', 'America/Martinique', 'America/Cayenne', 'America/St_Barthelemy', 'America/Marigot'];
-  var inEurope = !tz || /^Europe\//.test(tz) || EU_OTHER.indexOf(tz) !== -1;
+  var EU_TZ = ['Europe/Vienna', 'Europe/Brussels', 'Europe/Sofia', 'Europe/Zagreb', 'Europe/Nicosia', 'Asia/Nicosia', 'Asia/Famagusta',
+    'Europe/Prague', 'Europe/Copenhagen', 'Europe/Tallinn', 'Europe/Helsinki', 'Europe/Mariehamn', 'Europe/Paris',
+    'Europe/Berlin', 'Europe/Busingen', 'Europe/Athens', 'Europe/Budapest', 'Europe/Dublin', 'Europe/Rome', 'Europe/Riga',
+    'Europe/Vilnius', 'Europe/Luxembourg', 'Europe/Malta', 'Europe/Amsterdam', 'Europe/Warsaw', 'Europe/Lisbon',
+    'Atlantic/Madeira', 'Atlantic/Azores', 'Europe/Bucharest', 'Europe/Bratislava', 'Europe/Ljubljana', 'Europe/Madrid',
+    'Africa/Ceuta', 'Atlantic/Canary', 'Europe/Stockholm',
+    'Indian/Reunion', 'Indian/Mayotte', 'America/Guadeloupe', 'America/Martinique', 'America/Cayenne', 'America/Marigot'];
+  var inEurope = !tz || EU_TZ.indexOf(tz) !== -1;
   window.wuhaInEurope = inEurope;
 
   CookieConsent.run({
