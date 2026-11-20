@@ -23,6 +23,7 @@ jobs:
         run: |
           pip install --quiet pillow==11.0.0
           python source/build.py
+          TARGET=live python source/build.py
 
       - name: Check FTP password secret
         env:
@@ -51,3 +52,27 @@ jobs:
           protocol: ftps
           local-dir: ./wordpress-plugin/
           server-dir: ./wp-content/plugins/wuha-subscribe/
+
+      - name: Upload live site to www.wuha.world (web root, next to WordPress)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.world4you.com
+          username: ftp2463261
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./site-live/
+          server-dir: ./
+
+      - name: Make the static site the homepage (.htaccess, once, with backup)
+        env:
+          FTP_USER: ftp2463261
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          H=ftp://ftp.world4you.com
+          curl -sS --ssl-reqd --user "$FTP_USER:$FTP_PASSWORD" "$H/.htaccess" -o htaccess.current
+          if grep -q "BEGIN WUHA static site" htaccess.current; then echo ".htaccess already set up"; exit 0; fi
+          curl -sS --ssl-reqd --user "$FTP_USER:$FTP_PASSWORD" -T htaccess.current "$H/.htaccess-before-wuha"
+          { cat source/htaccess-wuha.txt; echo; cat htaccess.current; } > htaccess.new
+          curl -sS --ssl-reqd --user "$FTP_USER:$FTP_PASSWORD" -T htaccess.new "$H/.htaccess"
+          echo "Patched .htaccess (backup: .htaccess-before-wuha)"

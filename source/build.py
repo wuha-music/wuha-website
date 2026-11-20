@@ -4,7 +4,9 @@ from PIL import Image
 
 SRC = os.path.dirname(os.path.abspath(__file__))  # source/
 P = os.path.join(SRC, 'design')
-OUT = os.path.join(os.path.dirname(SRC), 'site')
+LIVE = os.environ.get('TARGET') == 'live'
+OUT = os.path.join(os.path.dirname(SRC), 'site-live' if LIVE else 'site')
+BASE = 'https://www.wuha.world/' if LIVE else 'https://www.wuha.world/2027/'
 IMG = os.path.join(OUT, 'assets', 'img')
 FNT = os.path.join(OUT, 'assets', 'fonts')
 D = os.path.join(SRC, 'img')
@@ -270,6 +272,22 @@ for page in PAGES:
     if src == 'Listen.dc.html':
         html = html.replace('width: 390px; height: 844px; box-sizing: border-box; overflow: hidden;', 'width: 100%; max-width: 440px; min-height: 100vh; margin: 0 auto; box-sizing: border-box;', 1)
     up = '../' * depth
+    canon = 'https://www.wuha.world/' + (odir + '/' if odir else '')
+    robots = 'noindex, nofollow' if (not LIVE or odir == 'confirmed') else 'index, follow'
+    ogtype = 'music.song' if song else 'website'
+    ogimg = BASE + ('assets/img/' + BLOBS[song['cover']][1] if song else 'assets/img/wuha-hero.webp')
+    LINKS_SAME = ['https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ', 'https://music.apple.com/at/artist/wuha/1790726364', 'https://www.youtube.com/@wuha_music', 'https://www.instagram.com/wuha_music/', 'https://www.tiktok.com/@wuha_music', 'https://www.facebook.com/wuhamusic/', 'https://soundcloud.com/wuha-music']
+    if song:
+        ld = {'@context': 'https://schema.org', '@type': 'MusicRecording', 'name': song['title'], 'url': canon, 'isrcCode': song['isrc'],
+              'image': ogimg, 'datePublished': '-'.join(reversed(song['date'].split('.'))),
+              'byArtist': {'@type': 'MusicGroup', 'name': 'WUHA', 'url': 'https://www.wuha.world/'}, 'sameAs': [song['spotify'], song['apple'], song['youtube']]}
+    elif src == 'Main.dc.html':
+        ld = {'@context': 'https://schema.org', '@type': 'MusicGroup', 'name': 'WUHA', 'url': 'https://www.wuha.world/', 'genre': ['Synthpop', 'Pop', 'Dance'],
+              'foundingLocation': {'@type': 'Place', 'name': 'Vienna, Austria'}, 'image': ogimg, 'email': 'contact@wuha.world', 'sameAs': LINKS_SAME,
+              'member': [{'@type': 'Person', 'name': 'Andreas Wukics-Hagen'}, {'@type': 'Person', 'name': 'Wolfgang Laab'}]}
+    else:
+        ld = None
+    jsonld = ('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>') if ld else ''
     page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -277,12 +295,17 @@ for page in PAGES:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{esc(desc)}">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="{robots}">
+<link rel="canonical" href="{canon}">
+<meta property="og:url" content="{canon}">
+<meta property="og:type" content="{ogtype}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0A0A0A">
 <meta name="build" content="{BUILD}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{up}assets/img/wuha-hero.webp">
+<meta property="og:image" content="{ogimg}">
+{jsonld}
 <link rel="icon" href="{up}assets/img/favicon.png">
 <link rel="preload" href="{up}assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('consent','default',{{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500}});dataLayer.push({{wuha_site:'new'}});</script>
@@ -313,5 +336,16 @@ os.makedirs(os.path.join(OUT, 'assets', 'email'), exist_ok=True)
 for f in ('wuha-email-header.png', 'wuha-logo-scanline.png'):
     shutil.copy(os.path.join(SRC, 'email', f), os.path.join(OUT, 'assets', 'email'))
 shutil.copytree(os.path.join(SRC, 'consent'), os.path.join(OUT, 'assets', 'cc'))
-open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /\n')
+if LIVE:
+    open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /2027/\n\nSitemap: https://www.wuha.world/sitemap.xml\n')
+    import datetime
+    today = datetime.date.today().isoformat()
+    urls = [('', '1.0', 'weekly')] + [(x['slug'] + '/', '0.8', 'monthly') for x in SONGS] + [('press/', '0.6', 'monthly'), ('listen/', '0.5', 'monthly'), ('imprint/', '0.2', 'yearly'), ('privacy-policy/', '0.2', 'yearly')]
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u, pr, cf in urls:
+        sm.append('  <url><loc>https://www.wuha.world/%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>' % (u, today, cf, pr))
+    sm.append('</urlset>')
+    open(os.path.join(OUT, 'sitemap.xml'), 'w').write('\n'.join(sm) + '\n')
+else:
+    open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /\n')
 print('done')

@@ -1,0 +1,10 @@
+# BEGIN WUHA static site
+# The static site (index.html) is the homepage. WordPress stays for MailPoet, imprint, privacy and wp-admin.
+DirectoryIndex index.html index.php
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# WordPress links on the homepage (MailPoet confirmation, ?p=, search, previews) go to WordPress
+RewriteCond %{QUERY_STRING} (^|&)(mailpoet_page|mailpoet_router|p|page_id|s|preview|feed|rest_route|attachment_id|cat|author|tag)= [NC]
+RewriteRule ^$ /index.php [L]
+</IfModule>
+# END WUHA static site

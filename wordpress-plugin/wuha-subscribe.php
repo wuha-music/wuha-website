@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WUHA Subscribe
  * Description: Newsletter sign-up endpoint for the static wuha.world site. Adds the email to the MailPoet list "English" or "Deutsch" and sends MailPoet's confirmation email (double opt-in).
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: WUHA
  * Requires PHP: 7.4
  */
@@ -15,7 +15,7 @@ const WUHA_SUB_ORIGINS = ['https://www.wuha.world', 'https://wuha.world'];
 const WUHA_SUB_LIMIT = 5;          // sign-ups per IP …
 const WUHA_SUB_WINDOW = HOUR_IN_SECONDS; // … per hour
 if (!defined('WUHA_CONFIRMED_URL')) {
-    define('WUHA_CONFIRMED_URL', 'https://www.wuha.world/2027/confirmed/');
+    define('WUHA_CONFIRMED_URL', 'https://www.wuha.world/confirmed/');
 }
 
 // admin-ajax.php is used instead of the REST API, which "Disable REST API" blocks for visitors
@@ -146,5 +146,5 @@ function wuha_sub_confirm_redirect()
 }
 add_action('template_redirect', 'wuha_sub_confirm_redirect', 1);
 add_action('send_headers', function () {
-    header('X-WUHA-Subscribe: 1.3');
+    header('X-WUHA-Subscribe: 1.4');
 });
