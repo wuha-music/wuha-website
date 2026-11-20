@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WUHA Subscribe
  * Description: Newsletter sign-up endpoint for the static wuha.world site. Adds the email to the MailPoet list "English" or "Deutsch" and sends MailPoet's confirmation email (double opt-in).
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: WUHA
  * Requires PHP: 7.4
  */
@@ -110,25 +110,38 @@ function wuha_sub_handle(array $in)
 
 // After MailPoet has confirmed a subscription, show the WUHA confirmation page instead of the theme page.
 // Only redirects when MailPoet reports the subscriber as "subscribed"; otherwise MailPoet's own page is shown.
-add_action('template_redirect', function () {
+function wuha_sub_confirm_redirect()
+{
     if (($_GET['mailpoet_page'] ?? '') !== 'subscriptions' || ($_GET['action'] ?? '') !== 'confirm') {
         return;
     }
-    if (!class_exists('\\MailPoet\\API\\API') || empty($_GET['data'])) {
-        return;
-    }
-    $data = json_decode(base64_decode(strtr(wp_unslash($_GET['data']), '-_', '+/')), true);
-    $email = is_array($data) && isset($data['email']) ? sanitize_email($data['email']) : '';
-    if (!is_email($email)) {
-        return;
-    }
+    $why = 'start';
     try {
-        $sub = \MailPoet\API\API::MP('v1')->getSubscriber($email);
-    } catch (\Exception $e) {
-        return;
+        if (!class_exists('MailPoet\\API\\API') || empty($_GET['data'])) {
+            $why = 'no-mailpoet-or-data';
+        } else {
+            $data = json_decode(base64_decode(strtr(wp_unslash($_GET['data']), '-_', '+/')), true);
+            $email = is_array($data) && isset($data['email']) ? sanitize_email($data['email']) : '';
+            if (!is_email($email)) {
+                $why = 'no-email';
+            } else {
+                $sub = \MailPoet\API\API::MP('v1')->getSubscriber($email);
+                $why = 'status-' . ($sub['status'] ?? 'none');
+                if (($sub['status'] ?? '') === 'subscribed') {
+                    nocache_headers();
+                    wp_redirect(WUHA_CONFIRMED_URL, 302);
+                    exit;
+                }
+            }
+        }
+    } catch (\Throwable $e) {
+        $why = 'error';
     }
-    if (($sub['status'] ?? '') === 'subscribed') {
-        wp_redirect(WUHA_CONFIRMED_URL, 302);
-        exit;
+    if (!headers_sent()) {
+        header('X-WUHA-Confirm: ' . $why);
     }
-}, 20);
+}
+add_action('template_redirect', 'wuha_sub_confirm_redirect', 1);
+add_action('send_headers', function () {
+    header('X-WUHA-Subscribe: 1.2');
+});
