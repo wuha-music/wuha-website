@@ -14,11 +14,15 @@
  --cc-cookie-category-block-bg:#141414;--cc-cookie-category-block-border:#262626;
  --cc-cookie-category-block-hover-bg:#1A1A1A;--cc-cookie-category-block-hover-border:#3A3A3A;
  --cc-cookie-category-expanded-block-bg:#141414;--cc-cookie-category-expanded-block-hover-bg:#1A1A1A;
- --cc-overlay-bg:rgba(0,0,0,.72);--cc-webkit-scrollbar-bg:#262626;--cc-webkit-scrollbar-hover-bg:#3A3A3A;
+ --cc-overlay-bg:rgba(10,10,10,.55);--cc-webkit-scrollbar-bg:#262626;--cc-webkit-scrollbar-hover-bg:#3A3A3A;
  --cc-footer-bg:#0F0F0F;--cc-footer-color:#BDBDBD;--cc-footer-border-color:#262626;
  --cc-link-color:#FF2E88;--cc-modal-border-radius:2px;--cc-btn-border-radius:2px;
 }
-#cc-main .cm,#cc-main .pm{border:1px solid #262626;box-shadow:0 0 0 1px rgba(255,46,136,.08),0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,46,136,.12)}
+#cc-main .cm,#cc-main .pm{border:1px solid rgba(255,46,136,.55);box-shadow:0 0 0 1px rgba(255,46,136,.15),0 30px 80px rgba(0,0,0,.7),0 0 60px rgba(255,46,136,.28)}
+/* soft, blurred page behind the banner; normal again after the choice */
+#cc-main .cm-wrapper:before,#cc-main .pm-wrapper:before,#cc-main .pm-overlay{-webkit-backdrop-filter:blur(8px) saturate(.8);backdrop-filter:blur(8px) saturate(.8)}
+#cc-main .cm--box{max-width:30em}
+#cc-main .cm__body{padding-top:.4em}
 #cc-main .cm__title,#cc-main .pm__title{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.04em;font-size:1.7em;line-height:1}
 #cc-main .cm__title::after{content:"";display:block;width:56px;height:2px;margin-top:12px;background:#FF2E88;box-shadow:0 0 8px rgba(255,46,136,.8)}
 #cc-main .pm__section-title{font-weight:600;letter-spacing:.02em}

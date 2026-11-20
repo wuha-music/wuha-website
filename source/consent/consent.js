@@ -39,9 +39,10 @@
 
   CookieConsent.run({
     revision: 1,
+    disablePageInteraction: true,
     cookie: { name: 'wuha_consent', expiresAfterDays: 182 },
     guiOptions: {
-      consentModal: { layout: 'box wide', position: 'bottom center', equalWeightButtons: true, flipButtons: false },
+      consentModal: { layout: 'box', position: 'middle center', equalWeightButtons: true, flipButtons: false },
       preferencesModal: { layout: 'box', equalWeightButtons: true, flipButtons: false }
     },
     categories: {
