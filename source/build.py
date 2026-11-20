@@ -302,5 +302,8 @@ for page in PAGES:
 
 os.makedirs(os.path.join(OUT, 'assets', 'audio'), exist_ok=True)
 shutil.copy(os.path.join(SRC, 'breaking-sound-radio-interview.mp3'), os.path.join(OUT, 'assets', 'audio'))
+os.makedirs(os.path.join(OUT, 'assets', 'email'), exist_ok=True)
+for f in ('wuha-email-header.png', 'wuha-logo-scanline.png'):
+    shutil.copy(os.path.join(SRC, 'email', f), os.path.join(OUT, 'assets', 'email'))
 open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /\n')
 print('done')
