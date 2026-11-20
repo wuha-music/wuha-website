@@ -186,7 +186,8 @@ var h=document.getElementById('wuha-hdr'),inner=h.firstElementChild,logo=h.query
 function onScroll(){var s=(window.scrollY||0)>60;h.style.background=s?'rgba(10,10,10,0.72)':'rgba(10,10,10,1)';inner.style.padding=(s?'4px':'22px')+' 32px';logo.style.height=s?'20px':'34px';}
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 var b=document.querySelector('[data-if="playerOff"] button');
-if(b)b.addEventListener('click',function(){var on=document.querySelector('[data-if="playerOn"]');on.innerHTML='<iframe title="Spotify player" src="https://open.spotify.com/embed/'+document.body.dataset.embed+'?theme=0" width="100%" height="152" style="border:0;border-radius:12px;flex:1 1 100%" allow="encrypted-media" loading="lazy"></iframe>';on.hidden=false;document.querySelector('[data-if="playerOff"]').hidden=true;});
+window.wuhaLoadPlayer=function(){var on=document.querySelector('[data-if="playerOn"]');if(!on||!on.hidden)return;on.innerHTML='<iframe title="Spotify player" src="https://open.spotify.com/embed/'+document.body.dataset.embed+'?theme=0" width="100%" height="152" style="border:0;border-radius:12px;flex:1 1 100%" allow="encrypted-media" loading="lazy"></iframe>';on.hidden=false;document.querySelector('[data-if="playerOff"]').hidden=true;};
+if(b)b.addEventListener('click',window.wuhaLoadPlayer);
 })();'''
 
 
@@ -257,6 +258,7 @@ for page in PAGES:
     # song cover/blob refs inside data were ids: map bare ids too
     html = re.sub(r'(src|href)="([0-9a-f]{32})"', lambda m: f'{m.group(1)}="{B(m.group(2), depth)}"', html)
     html = downloads(links(html, depth), depth)
+    html = html.replace('href="#cookie-settings"', 'href="#" data-cc="show-preferencesModal"')
     html = html.replace("font-family: 'JetBrains Mono', monospace;", "font-family: ui-monospace, Menlo, Consolas, monospace;")
     js = REVEAL_JS
     if src == 'Main.dc.html':
@@ -283,6 +285,9 @@ for page in PAGES:
 <meta property="og:image" content="{up}assets/img/wuha-hero.webp">
 <link rel="icon" href="{up}assets/img/favicon.png">
 <link rel="preload" href="{up}assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('consent','default',{{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500}});dataLayer.push({{wuha_site:'new'}});</script>
+<link rel="stylesheet" href="{up}assets/cc/cookieconsent.css">
+<link rel="stylesheet" href="{up}assets/cc/consent-theme.css">
 <style>
 {FONTS.replace('DEPTH', up)}{css}
 </style>
@@ -292,6 +297,8 @@ for page in PAGES:
 <script>
 {js}
 </script>
+<script src="{up}assets/cc/cookieconsent.umd.js"></script>
+<script src="{up}assets/cc/consent.js"></script>
 </body>
 </html>
 '''
@@ -305,5 +312,6 @@ shutil.copy(os.path.join(SRC, 'breaking-sound-radio-interview.mp3'), os.path.joi
 os.makedirs(os.path.join(OUT, 'assets', 'email'), exist_ok=True)
 for f in ('wuha-email-header.png', 'wuha-logo-scanline.png'):
     shutil.copy(os.path.join(SRC, 'email', f), os.path.join(OUT, 'assets', 'email'))
+shutil.copytree(os.path.join(SRC, 'consent'), os.path.join(OUT, 'assets', 'cc'))
 open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nDisallow: /\n')
 print('done')

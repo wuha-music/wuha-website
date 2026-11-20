@@ -21,3 +21,11 @@ Schutz: nur von wuha.world, unsichtbares Bot-Feld, max. 5 Anmeldungen pro IP und
 ## Messung (für Meta, TikTok, Google über den Tag Manager)
 
 Die Seite schreibt Ereignisse in `dataLayer`: `spotify_click`, `newsletter_button`, `newsletter_signup`, `listen_button`, `press_download`. Seitenaufrufe zählt der Tag Manager selbst. Geladen wird er erst nach Zustimmung im Cookie-Banner (noch offen).
+
+## Cookie-Banner
+
+`source/consent/` – CookieConsent v3.0.1 (MIT, liegt auf dem eigenen Server) mit WUHA-Design (`consent-theme.css`) und Einstellungen (`consent.js`).
+Kategorien: Notwendig · Statistics (Google Analytics) · Marketing (Meta Pixel, TikTok Pixel) · External media (Spotify, YouTube).
+Vor der Zustimmung lädt nichts von fremden Servern. Google Tag Manager `GTM-5JK6VLZG` lädt erst nach Zustimmung zu Statistics oder Marketing.
+Google Consent Mode v2: Standard „denied“, nach der Wahl `gtag('consent','update', …)`. Ereignis `wuha_consent` im dataLayer.
+Die neue Seite setzt `wuha_site: 'new'` im dataLayer, damit der alte Banner-Tag im Tag Manager hier nicht feuert.
