@@ -26,6 +26,17 @@
     if (a || m) loadGTM();
     if (md && window.wuhaLoadPlayer) window.wuhaLoadPlayer();
   }
+  var btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'wuha-ccbtn'; btn.hidden = true;
+  btn.setAttribute('aria-label', 'Cookie settings');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 3.5 3 3 0 0 0 3.5 3.5 3 3 0 0 0 2 2.5z"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="12" cy="15.5" r="1"/><circle cx="16" cy="13" r="1"/></svg><span>Cookies</span>';
+  btn.addEventListener('click', function () { CookieConsent.showPreferences(); });
+  document.body.appendChild(btn);
+  function syncBtn() { btn.hidden = !CookieConsent.validConsent(); }
+  window.addEventListener('cc:onConsent', syncBtn);
+  window.addEventListener('cc:onChange', syncBtn);
+  window.addEventListener('cc:onModalHide', syncBtn);
+
   CookieConsent.run({
     revision: 1,
     cookie: { name: 'wuha_consent', expiresAfterDays: 182 },
@@ -70,5 +81,5 @@
         }
       }
     }
-  });
+  }).then(syncBtn);
 })();
