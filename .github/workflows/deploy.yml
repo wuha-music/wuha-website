@@ -41,3 +41,13 @@ jobs:
           protocol: ftps
           local-dir: ./site/
           server-dir: ./2027/
+
+      - name: Upload WordPress plugin wuha-subscribe (newsletter)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.world4you.com
+          username: ftp2463261
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./wordpress-plugin/
+          server-dir: ./wp-content/plugins/wuha-subscribe/

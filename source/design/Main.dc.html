@@ -338,14 +338,16 @@ header a:hover img{filter:drop-shadow(0 0 10px rgba(255,46,136,.7))}
     </div>
     <form style="position: relative; flex: 1.2 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 18px; align-self: center;" onSubmit="{{submit}}">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
-        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Email<input type="email" required autocomplete="email" style="min-height: 48px; padding: 0 14px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"></label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Language<select style="min-height: 48px; padding: 0 10px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"><option>English</option><option>Deutsch</option></select></label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Email<input type="email" name="email" required autocomplete="email" style="min-height: 48px; padding: 0 14px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"></label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px;">Language<select name="lang" style="min-height: 48px; padding: 0 10px; background: #0A0A0A; color: #F5F5F5; border: 1px solid #5A5A5A; border-radius: 2px; font: inherit; font-weight: 400;"><option value="en">English</option><option value="de">Deutsch</option></select></label>
       </div>
+      <label aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
       <p style="margin: 0; font-size: 14px; color: #BDBDBD;">We don't spam. Read our <a href="https://www.wuha.world/privacy-policy/" style="color: #F5F5F5;">privacy policy</a> for more info.</p>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
         <button type="submit" style="min-height: 52px; padding: 0 28px; background: #FF2E88; color: #0A0A0A; border: 0; border-radius: 2px; font: inherit; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;">Subscribe</button>
         <a href="https://whatsapp.com/channel/0029VbBXY1BC6Zvj8IFkdb3A" style="display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; text-decoration: none; border-bottom: 1px solid #8A8A8A;">Or follow our WhatsApp channel</a>
         <sc-if value="{{sent}}" hint-placeholder-val="{{false}}"><span role="status" style="color: #FF2E88; font-weight: 600;">Check your inbox or spam folder to confirm your subscription.</span></sc-if>
+        <sc-if value="{{nlError}}" hint-placeholder-val="{{false}}"><span role="alert" data-msg style="color: #F5F5F5; font-weight: 600;">Something went wrong. Please try again or write to contact@wuha.world.</span></sc-if>
       </div>
     </form>
   </div>
@@ -531,6 +533,7 @@ class Component extends DCLogic {
       navHidden: c ? 'false' : 'true',
       navTab: c ? '0' : '-1',
       sent: this.state.sent,
+      nlError: false,
       menuOpen: this.state.menu,
       menuExpanded: this.state.menu ? 'true' : 'false',
       openMenu: () => this.setState({ menu: true }),

@@ -104,7 +104,7 @@ def find_block(s, tag, start):
             depth -= 1; i = n_close + len(tag) + 3
             if depth == 0: return o, oe, n_close, i
 
-TOGGLE = {'sent', 'playerOn', 'playerOff', 'menuOpen'}
+TOGGLE = {'sent', 'nlError', 'playerOn', 'playerOff', 'menuOpen'}
 
 def render(s, ctx):
     out, i = [], 0
@@ -142,7 +142,15 @@ FONTS = '''@font-face{font-family:Anton;src:url(DEPTHassets/fonts/anton-latin-40
 html,body{margin:0;background:#0A0A0A;overflow-x:clip}*{box-sizing:border-box}[data-if][hidden]{display:none!important}img{max-width:100%}
 '''
 
-REVEAL_JS = '''(function(){
+REVEAL_JS = r'''window.dataLayer=window.dataLayer||[];
+function wuhaTrack(ev,p){var o={event:ev};for(var k in p)o[k]=p[k];window.dataLayer.push(o);}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'',t=(a.textContent||'').trim();
+ if(/open\.spotify\.com/.test(h))wuhaTrack('spotify_click',{link_text:t,page:location.pathname});
+ if(/#newsletter$/.test(h))wuhaTrack('newsletter_button',{link_text:t,page:location.pathname});
+ if(/(^|\/)listen\/$/.test(h)||(a.closest('.wuha-mbar')&&/listen/i.test(t)))wuhaTrack('listen_button',{link_text:t,page:location.pathname});
+ if(a.closest('#downloads')||a.hasAttribute('data-download'))wuhaTrack('press_download',{file:a.getAttribute('data-download')||t});
+});
+(function(){
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce&&'IntersectionObserver' in window){
  var els=[].slice.call(document.querySelectorAll('section > div, section > h2, section > article, footer > div')).filter(function(el){return !el.closest('.wuha-hero')&&el.getBoundingClientRect().top>window.innerHeight;});
@@ -165,7 +173,11 @@ function setMenu(o){if(!menu)return;menu.hidden=!o;document.documentElement.styl
 burgers.forEach(function(b){b.addEventListener('click',function(){setMenu(true);});});
 if(menu){menu.querySelector('button').addEventListener('click',function(){setMenu(false);});[].forEach.call(menu.querySelectorAll('a'),function(a){a.addEventListener('click',function(){setMenu(false);});});document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});}
 var f=document.querySelector('#newsletter form');
-if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=f.querySelector('[data-if="sent"]');if(ok)ok.hidden=false;});
+if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=f.querySelector('[data-if="sent"]'),er=f.querySelector('[data-if="nlError"]'),bt=f.querySelector('button[type="submit"]');ok.hidden=true;er.hidden=true;bt.disabled=true;
+ fetch('https://www.wuha.world/wp-admin/admin-ajax.php',{method:'POST',body:new URLSearchParams({action:'wuha_subscribe',email:f.email.value,lang:f.lang.value,website:f.website.value})})
+ .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
+ .then(function(x){if(x.j&&x.j.ok){ok.hidden=false;f.reset();wuhaTrack('newsletter_signup',{language:f.lang.value});}else{var m=er.querySelector('[data-msg]');if(x.s===429)m.textContent='Too many sign-ups from your connection. Please try again later.';else if(x.j&&x.j.error==='email')m.textContent='Please check your email address.';er.hidden=false;}})
+ .catch(function(){er.hidden=false;}).then(function(){bt.disabled=false;});});
 })();'''
 
 SUB_JS = '''(function(){
@@ -203,7 +215,7 @@ for page in PAGES:
     css = '\n'.join(re.findall(r'<style>(.*?)</style>', helmet, re.S))
     body = re.search(r'<x-dc>(.*?)</x-dc>', raw, re.S).group(1)
     body = re.sub(r'<helmet>.*?</helmet>', '', body, flags=re.S)
-    ctx = dict(false=False, true=True, sent=False, menuOpen=False, menuExpanded='false', playerOn=False, playerOff=True,
+    ctx = dict(false=False, true=True, sent=False, nlError=False, menuOpen=False, menuExpanded='false', playerOn=False, playerOff=True,
                navHidden='true', navTransform='translateY(-100%)', navOpacity='0', navVisibility='hidden', navDelay='450ms', navTab='-1',
                navBg='rgba(10,10,10,1)', navPad='22px', logoH='34px',
                featured=dict(links=featured), songs=songs, videos=videos, airplays=airplays, channels=channels,
