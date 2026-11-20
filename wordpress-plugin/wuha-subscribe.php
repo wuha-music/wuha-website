@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WUHA Subscribe
  * Description: Newsletter sign-up endpoint for the static wuha.world site. Adds the email to the MailPoet list "English" or "Deutsch" and sends MailPoet's confirmation email (double opt-in).
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: WUHA
  * Requires PHP: 7.4
  */
@@ -112,15 +112,18 @@ function wuha_sub_handle(array $in)
 // Only redirects when MailPoet reports the subscriber as "subscribed"; otherwise MailPoet's own page is shown.
 function wuha_sub_confirm_redirect()
 {
-    if (($_GET['mailpoet_page'] ?? '') !== 'subscriptions' || ($_GET['action'] ?? '') !== 'confirm') {
+    // MailPoet's router clears $_GET, so read the original query string
+    $q = [];
+    parse_str((string) ($_SERVER['QUERY_STRING'] ?? ''), $q);
+    if (($q['mailpoet_page'] ?? '') !== 'subscriptions' || ($q['action'] ?? '') !== 'confirm') {
         return;
     }
     $why = 'start';
     try {
-        if (!class_exists('MailPoet\\API\\API') || empty($_GET['data'])) {
+        if (!class_exists('MailPoet\\API\\API') || empty($q['data'])) {
             $why = 'no-mailpoet-or-data';
         } else {
-            $data = json_decode(base64_decode(strtr(wp_unslash($_GET['data']), '-_', '+/')), true);
+            $data = json_decode(base64_decode(strtr((string) $q['data'], '-_', '+/')), true);
             $email = is_array($data) && isset($data['email']) ? sanitize_email($data['email']) : '';
             if (!is_email($email)) {
                 $why = 'no-email';
@@ -143,5 +146,5 @@ function wuha_sub_confirm_redirect()
 }
 add_action('template_redirect', 'wuha_sub_confirm_redirect', 1);
 add_action('send_headers', function () {
-    header('X-WUHA-Subscribe: 1.2');
+    header('X-WUHA-Subscribe: 1.3');
 });
