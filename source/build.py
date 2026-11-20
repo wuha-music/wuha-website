@@ -49,6 +49,9 @@ lg = Image.open(os.path.join(D, 'wuha-logo.png'))
 fav = Image.new('RGBA', (64, 64), (10, 10, 10, 255)); t = lg.copy(); t.thumbnail((56, 56)); fav.paste(t, ((64 - t.width) // 2, (64 - t.height) // 2), t)
 fav.save(os.path.join(IMG, 'favicon.png'))
 
+# social preview images (made by tools/make-og.js)
+shutil.copytree(os.path.join(SRC, 'og'), os.path.join(OUT, 'assets', 'og'))
+
 FS = os.path.join(SRC, 'fonts')
 shutil.copy(os.path.join(FS, 'anton-latin-400-normal.woff2'), FNT)
 for w in (400, 500, 600, 700):
@@ -277,11 +280,13 @@ for page in PAGES:
     canon = 'https://www.wuha.world/' + (odir + '/' if odir else '')
     robots = 'noindex, nofollow' if (not LIVE or odir == 'confirmed') else 'index, follow'
     ogtype = 'music.song' if song else 'website'
-    ogimg = BASE + ('assets/img/' + BLOBS[song['cover']][1] if song else 'assets/img/wuha-hero.webp')
+    ogname = song['slug'] if song else {'Main.dc.html': 'home', 'Press.dc.html': 'press', 'Listen.dc.html': 'listen', 'Confirmed.dc.html': 'newsletter'}.get(src, 'home')
+    ogimg = BASE + 'assets/og/og-' + ogname + '.jpg?v=1'
+    ogalt = ('Cover of ' + song['title'] + ' by WUHA') if song else 'WUHA logo in front of the band photo, Feel the Groove'
     LINKS_SAME = ['https://open.spotify.com/artist/2Xa5A0dIwmZt8OBZrTv4qQ', 'https://music.apple.com/at/artist/wuha/1790726364', 'https://www.youtube.com/@wuha_music', 'https://www.instagram.com/wuha_music/', 'https://www.tiktok.com/@wuha_music', 'https://www.facebook.com/wuhamusic/', 'https://soundcloud.com/wuha-music']
     if song:
         ld = {'@context': 'https://schema.org', '@type': 'MusicRecording', 'name': song['title'], 'url': canon, 'isrcCode': song['isrc'],
-              'image': ogimg, 'datePublished': '-'.join(reversed(song['date'].split('.'))),
+              'image': BASE + 'assets/img/' + BLOBS[song['cover']][1], 'datePublished': '-'.join(reversed(song['date'].split('.'))),
               'byArtist': {'@type': 'MusicGroup', 'name': 'WUHA', 'url': 'https://www.wuha.world/'}, 'sameAs': [song['spotify'], song['apple'], song['youtube']]}
     elif src == 'Main.dc.html':
         ld = {'@context': 'https://schema.org', '@type': 'MusicGroup', 'name': 'WUHA', 'url': 'https://www.wuha.world/', 'genre': ['Synthpop', 'Pop', 'Dance'],
@@ -307,6 +312,11 @@ for page in PAGES:
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:image" content="{ogimg}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(ogalt)}">
+<meta property="og:site_name" content="WUHA">
+<meta name="twitter:image" content="{ogimg}">
 {jsonld}
 <link rel="icon" href="{up}assets/img/favicon.png">
 <link rel="preload" href="{up}assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
