@@ -207,9 +207,13 @@ def zipdir(name, folders):
                 z.write(os.path.join(PR, fo, f), os.path.join('WUHA', fo, f))
 zipdir('wuha-covers.zip', ['covers'])
 zipdir('wuha-logo.zip', ['logo'])
-zipdir('wuha-press-kit.zip', ['photos', 'logo', 'covers'])
-DL = {'kit': 'wuha-press-kit.zip', 'covers': 'wuha-covers.zip', 'logo': 'wuha-logo.zip',
+zipdir('WUHA_PressKit_2026-11.zip', ['pdf', 'photos', 'logo', 'covers'])
+DL = {'kit': 'WUHA_PressKit_2026-11.zip', 'kit-en': 'pdf/WUHA_PressKit_EN_2026-11.pdf', 'kit-de': 'pdf/WUHA_Pressekit_DE_2026-11.pdf', 'covers': 'wuha-covers.zip', 'logo': 'wuha-logo.zip',
       'key-visual': 'photos/wuha-key-visual.jpg', 'band': 'photos/wuha-band-bw.jpg'}
+for f in os.listdir(os.path.join(PR, 'pdf')):
+    m = re.match(r'WUHA_(SongSheet_EN|Songblatt_DE)_(.+)_\d{4}-\d{2}\.pdf$', f)
+    if m:
+        DL['sheet-' + ('en' if 'EN' in m.group(1) else 'de') + '-' + m.group(2).lower()] = 'pdf/' + f
 for f in os.listdir(os.path.join(PR, 'covers')):
     DL['cover-' + f[len('wuha-cover-'):-4]] = 'covers/' + f
 def downloads(s, depth):
